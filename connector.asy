@@ -6,25 +6,30 @@ void drawHAncorConnectorOppositeDir(Obj o1, int i1, Obj o2, int i2, real rh1 = 0
   pair p2 = o2.getAnchorPos(i2);
 
   pair e,w;
+  real d1, d2;
   if (o1.a[i1].dir == DE) {
     e = p1;
     w = p2;
+    d1 = rh1;
+    d2 = -rh2;
   } else {
     e = p2;
     w = p1;
+    d1 = -rh1;
+    d2 = rh2;
   }
 
   if (e.x < w.x) {
-    // 3 Linees
-    real h = ((p2.x - p1.x) * rh1) + p1.x;
+    // 3 Linees <- To be fixed with abs
+    real h = d1 + p1.x;
     pair p3 = (h, p1.y);
     pair p4 = (h, p2.y);
     draw(p1 -- p3 -- p4 -- p2, arrow = ArcArrow());
   } else {
-    // 5 Linees
-    real h1 = ((p1.x - p2.x) * rh1 ) + p1.x;
-    real h2 = p2.x - ((p1.x - p2.x) * rh2 );
-    real v  = ((p2.y - p1.y) * rv) + p1.y;
+    // 5 Linees <- To be fixed with abs
+    real h1 = d1 + p1.x;
+    real h2 = d2 + p2.x;
+    real v  = rv + p1.y;
     pair p3 = (h1, p1.y);
     pair p4 = (h1, v);
     pair p5 = (h2, v);
@@ -38,26 +43,31 @@ void drawVAncorConnectorOppositeDir(Obj o1, int i1, Obj o2, int i2, real rv1 = 0
   pair p1 = o1.getAnchorPos(i1);
   pair p2 = o2.getAnchorPos(i2);
   
-  pair s,n;
+  pair s, n;
+  real d1, d2;
   if (o1.a[i1].dir == DN) {
     n = p1;
     s = p2;
+    d1 = rv1;
+    d2 = -rv2;
   } else {
     n = p2;
     s = p1;
+    d1 = -rv1;
+    d2 = rv2;
   }
   
   if (n.y < s.y) {
-    // 3 Linees
-    real v = ((p2.y - p1.y) * rv1) + p1.y;
+    // 3 Linees <- To be fixed with abs
+    real v = d1 + p1.y;
     pair p3 = (p1.x, v);
     pair p4 = (p2.x, v);
     draw(p1 -- p3 -- p4 -- p2, arrow = ArcArrow());
   } else {
-    // 5 Linees
-    real v1 = ((p1.y - p2.y) * rv1 ) + p1.y;
-    real v2 = p2.y - ((p1.y - p2.y) * rv2 );
-    real h  = ((p2.x - p1.x) * rh) + p1.x;
+    // 5 Linees <- To be fixed with abs
+    real v1 = d1 + p1.y;
+    real v2 = d2 + p2.y;
+    real h  = rh + p1.x;
     pair p3 = (p1.x, v1);
     pair p4 = (h, v1);
     pair p5 = (h, v2);
@@ -72,15 +82,15 @@ void drawAnchorConnectorH(Obj o1, int i1, Obj o2, int i2, real r1 = 0.5, real r2
   pair p2 = o2.getAnchorPos(i2);
   real v;
   if (o1.a[i1].dir == DE) {
-    v = p1.x + r1 * abs(p2.x - p1.x);
+    v = p1.x + r1;
   } else {
-    v = p1.x - r1 * abs(p2.x - p1.x);
+    v = p1.x - r1;
   }
   real h;
   if (o2.a[i2].dir == DN) {
-    h = p2.y + r2 * abs(p2.y - p1.y);
+    h = p2.y + r2;
   } else {
-    h = p2.y - r2 * abs(p2.y - p1.y);
+    h = p2.y - r2;
   }
   pair p3 = (v, p1.y);
   pair p4 = (v, h);
@@ -94,16 +104,16 @@ void drawAnchorConnectorV(Obj o1, int i1, Obj o2, int i2, real r1 = 0.5, real r2
   pair p2 = o2.getAnchorPos(i2);
   real v;
   if (o2.a[i2].dir == DE) {
-    v = p2.x + r1 * abs(p2.x - p1.x);
+    v = p2.x + r1;
   } else {
-    v = p2.x - r1 * abs(p2.x - p1.x);
+    v = p2.x - r1;
   }
   
   real h;
   if (o1.a[i1].dir == DN) {
-    h = p1.y + r1 * abs(p2.y - p1.y);
+    h = p1.y + r1;
   } else {
-    h = p1.y - r1 * abs(p2.y - p1.y);
+    h = p1.y - r1;
   }
 
   pair p3 = (p1.x, h);
@@ -135,7 +145,7 @@ void drawAncorConnector(Obj o1, int i1, Obj o2, int i2, real r1 = 0.5, real r2 =
       //////////////////////////
       //    Same direction    //
       //////////////////////////
-      real d = r1 * abs(p1.x - p2.x);
+      real d = r1;
       if (orientation == DH) {
         real v;
         if (o1.a[i1].dir == DW) {

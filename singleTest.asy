@@ -23,4 +23,4 @@ r3.draw();
 
 drawAncorConnector(r, 1, r2, 0);
 drawAncorConnector(r2, 1, r3, 0);
-drawAncorConnector(r3, 1, r, 0);
+drawAncorConnector(r3, 1, r, 0, .1, .1, 1);
