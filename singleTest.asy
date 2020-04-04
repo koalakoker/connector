@@ -6,21 +6,13 @@ import obj;
 import resistor;
 import connector;
 
-/* Obj o = Obj((0,0), 1, "1");
-Anchor a = Anchor((0,.5), DN);
-o.addAnchorPoint(a);
-Anchor b = Anchor((.5,0), DE);
-o.addAnchorPoint(b);
-
-o.draw(); */
-
-Resistor r = Resistor((0,0), "R1");
-r.draw();
-Resistor r2 = Resistor((1.5,0), "R2");
+Resistor r1 = Resistor((0,0), "$R_1$");
+r1.draw();
+Resistor r2 = Resistor((1.5,0), "$R_2$");
 r2.draw();
-Resistor r3 = Resistor((3,0), "R3");
+Resistor r3 = Resistor((3,0), "$R_3$");
 r3.draw();
 
-drawAncorConnector(r, 1, r2, 0);
-drawAncorConnector(r2, 1, r3, 0);
-drawAncorConnector(r3, 1, r, 0, .1, .1, 1);
+drawAncorConnector(r1, 1, r2, 0, arrow = None);
+drawAncorConnector(r2, 1, r3, 0, arrow = None);
+drawAncorConnector(r3, 1, r1, 0, .1, .1, arrow = None);

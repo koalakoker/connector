@@ -32,10 +32,10 @@ struct Resistor {
 
   void draw() {
     draw (shift(this.obj.pos) * this.p);
-    label(this.obj.name, this.obj.pos);
-    for (int i = 0; i < this.obj.a.length; i += 1 ) {
-      dot(obj.getAnchorPos(i));
-    }
+    label(this.obj.name, this.obj.pos + (0.5,0.2));
+    // for (int i = 0; i < this.obj.a.length; i += 1 ) {
+    //   dot(obj.getAnchorPos(i));
+    // }
   }
 }
 
