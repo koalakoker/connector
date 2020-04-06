@@ -3,10 +3,8 @@ settings.prc = false;
 size(10cm);
 
 import obj;
-import resistor;
-import capacitor;
+import components;
 import connector;
-import igbt;
 
 Igbt I1 = Igbt((0,0), "$Q_1$");
 I1.draw();
