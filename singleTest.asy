@@ -28,6 +28,12 @@ r2.draw();
 Resistor r3 = Resistor((3  ,-2.5), "$R_3$"  , orient = 90);
 r3.draw();
 
+Node vbus = Node(I3.obj.getAnchorPos(1) + (0,.1),"$V_{bus}$", align = N);
+vbus.draw();
+
+Node gnd = Node(r2.obj.getAnchorPos(1) + (0,-.1),"$gnd$", align = S);
+gnd.draw();
+
 drawAncorConnector(I1,1, I3, 1, 0.1, arrow = None);
 drawAncorConnector(I3,1, I5, 1, 0.1, arrow = None);
 drawAncorConnector(r1,1, r2, 1, 0.1, arrow = None);
