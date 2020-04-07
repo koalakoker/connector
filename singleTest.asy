@@ -53,12 +53,19 @@ import connector;
 //Inductor L3 = Inductor((0,0), -90,"$L_3$");
 //L3.draw();
 
-Capacitor C1 = Capacitor((0,0), 0, "$C_1$");
-C1.draw(showAnchor = true);
-Capacitor C2 = Capacitor((0,0), 90, "$C_2$");
-C2.draw(showAnchor = true);
-Capacitor C3 = Capacitor((0,0), -90, "$C_3$");
-C3.draw(showAnchor = true);
+//Capacitor C1 = Capacitor((0,0), 0, "$C_1$");
+//C1.draw();
+//Capacitor C2 = Capacitor((0,0), 90, "$C_2$");
+//C2.draw();
+//Capacitor C3 = Capacitor((0,0), -90, "$C_3$");
+//C3.draw();
+
+Fuse F1 = Fuse((0,0), 0, "$F_1$");
+F1.draw(showAnchor = true);
+Fuse F2 = Fuse((0,0), 90, "$F_2$");
+F2.draw(showAnchor = true);
+Fuse F3 = Fuse((0,0), -90, "$F_3$");
+F3.draw(showAnchor = true);
 
 Node a = Node((0,0));
 a.draw(red);
