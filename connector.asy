@@ -192,10 +192,22 @@ path drawAnchorConnectorSameDir(Obj o1, int i1, Obj o2, int i2, real r1 = 0.5, r
   return p;
 }
 
-void drawAnchorConnector(Obj o1, int i1, Obj o2, int i2, real r1 = 0.5, real r2 = 0.5, real r3 = 0.5, arrowbar arrow = None, pen pen = currentpen) {
+void drawAnchorConnector(Obj o1, int i1, Obj o2, int i2, 
+                         real r1 = 0.5, real r2 = 0.5, real r3 = 0.5,
+                         arrowbar arrow = None, pen pen = currentpen,
+                         bool drawNode1 = false, bool drawNode2 = false
+                         ) {
   path p;
   pair p1 = o1.getAnchorPos(i1);
   pair p2 = o2.getAnchorPos(i2);
+
+  if (drawNode1) {
+    dot(p1, p = pen + 5.0);
+  }
+  if (drawNode2) {
+    dot(p2, p = pen + 5.0);
+  }
+
   if (sameOrientation(o1.a[i1].dir, o2.a[i2].dir)) {
     int orientation = getOrientation(o1.a[i1].dir);
     if (sameDirection(o1.a[i1].dir, o2.a[i2].dir)) {

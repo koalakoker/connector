@@ -14,8 +14,9 @@ struct Obj {
     this.align = align;
   }
 
-  void addAnchorPoint(Anchor a) {
+  int addAnchorPoint(Anchor a) {
     this.a.push(a);
+    return this.a.length - 1;
   }
 
   pair getAnchorPos(int i) {
@@ -34,4 +35,9 @@ struct Obj {
 
 pair GetAnchorPos(Obj o, int i) {
   return o.getAnchorPos(i);
+}
+
+int AddAnchorPoint(Obj o, pair pos, int dir) {
+  Anchor a = Anchor(pos - o.pos, dir);
+  return o.addAnchorPoint(a);
 }
