@@ -20,11 +20,11 @@ struct Node {
     this.obj.a = aL;
   }
 
-  void draw() {
+  void draw(pen p = currentpen) {
     if (this.obj.name != "") {
       label(this.obj.name, this.obj.pos, align = this.obj.align);
     }
-    dot(obj.pos);
+    dot(obj.pos, p);
   }
 }
 
@@ -33,7 +33,6 @@ Obj operator cast(Node node) {return node.obj;}
 struct Resistor {
   Obj obj;
   path p;
-  bool showAnchor = false;
   int orient;
 
   void operator init(pair pos, int orient = 0, string name) {
@@ -46,42 +45,46 @@ struct Resistor {
 
     obj.operator init(pos, 0, name);
     
-    pair[] p = {(0,.5), (.15,.5), (.2,.6), (.3,.4), (.4,.6), (.5,.4), (.6,.6), (.7,.4), (.8,.6), (.85,.5), (1,.5)};
+    pair[] p = {(0,0), (.15,0), (.2,.1), (.3,-.1), (.4,.1), (.5,-.1), (.6,.1), (.7,-.1), (.8,.1), (.85,0), (1,0)};
     this.p = p[0] -- p[1] -- p[2] -- p[3] -- p[4] -- p[5] -- p[6] -- p[7] -- p[8] -- p[9] -- p[10];
 
     Anchor[] aL;
     Anchor a;
     if (this.orient == 0) {
-      a = Anchor((0,0.5), DW);
+      a = Anchor((0,0), DW);
       aL.push(a);
-      a = Anchor((1,0.5),  DE);
+      a = Anchor((1,0),  DE);
       aL.push(a);
     }
     if (this.orient == 90) {
-      a = Anchor((0.5,1), DN);
+      a = Anchor((0,0), DS);
       aL.push(a);
-      a = Anchor((0.5,0), DS);
+      a = Anchor((0,1), DN);
       aL.push(a);
     }
     if (this.orient == -90) {
-      a = Anchor((0.5,0), DS);
+      a = Anchor((0,0), DN);
       aL.push(a);
-      a = Anchor((0.5,1), DN);
+      a = Anchor((0,-1), DS);
       aL.push(a);
     }
     this.obj.a = aL;
   }
 
-  void draw() {
-    draw (shift(this.obj.pos) * rotate(this.orient, (0.5,0.5)) * this.p);
+  void draw(pen p = currentpen, bool showAnchor = false) {
+    draw (shift(this.obj.pos) * rotate(this.orient, (0,0)) * this.p, p = p);
     
     if (this.orient == 0) {
       label(this.obj.name, this.obj.pos + (0.5,0.2));
-    } else {
-      label(this.obj.name, this.obj.pos + (0.8,0.5));
+    }
+    if (this.orient == 90) {
+      label(this.obj.name, this.obj.pos + (0.2, 0.5));
+    }
+    if (this.orient == -90) {
+      label(this.obj.name, this.obj.pos + (0.2, -0.5));
     }
     
-    if (this.showAnchor) {
+    if (showAnchor) {
       for (int i = 0; i < this.obj.a.length; i += 1 ) {
         dot(obj.getAnchorPos(i));
       }
@@ -94,7 +97,6 @@ Obj operator cast(Resistor resistor) {return resistor.obj;}
 struct Capacitor {
   Obj obj;
   path[] p;
-  bool showAnchor = false;
   int orient;
 
   void operator init(pair pos, int orient = 0, string name) {
@@ -107,42 +109,46 @@ struct Capacitor {
 
     obj.operator init(pos, 0, name);
     
-    pair[] p = {(0,.5), (.4,.5), (.4,.3), (.4,.7), (.5,.3), (.5,.7), (.5,.5), (.9,.5)};
+    pair[] p = {(0,0), (.45,0), (.45,-.2), (.45,.2), (.55,-.2), (.55,.2), (.55,0), (1,0)};
     this.p = p[0] -- p[1] ^^ p[2] -- p[3] ^^ p[4] -- p[5] ^^ p[6] -- p[7];
 
     Anchor[] aL;
     Anchor a;
     if (this.orient == 0) {
-      a = Anchor((0,0.5), DW);
+      a = Anchor((0,0), DW);
       aL.push(a);
-      a = Anchor((.9,0.5),  DE);
+      a = Anchor((1,0),  DE);
       aL.push(a);
     }
     if (this.orient == 90) {
-      a = Anchor((0.5,.9), DN);
+      a = Anchor((0,0), DS);
       aL.push(a);
-      a = Anchor((0.5,0), DS);
+      a = Anchor((0,1), DN);
       aL.push(a);
     }
     if (this.orient == -90) {
-      a = Anchor((0.5,0), DS);
+      a = Anchor((0,0), DN);
       aL.push(a);
-      a = Anchor((0.5,.9), DN);
+      a = Anchor((0,-1), DS);
       aL.push(a);
     }
     this.obj.a = aL;
   }
 
-  void draw() {
-    draw (shift(this.obj.pos) * rotate(this.orient, (0.45,0.5)) * this.p);
+  void draw(pen p = currentpen, bool showAnchor = false) {
+    draw (shift(this.obj.pos) * rotate(this.orient, (0,0)) * this.p, p = p);
     
     if (this.orient == 0) {
-      label(this.obj.name, this.obj.pos + (0.45,0.1));
-    } else {
-      label(this.obj.name, this.obj.pos + (0.9,0.45));
+      label(this.obj.name, this.obj.pos + (0.35,0.2));
+    }
+    if (this.orient == 90) {
+      label(this.obj.name, this.obj.pos + (0.2,0.35));
+    }
+    if (this.orient == -90) {
+      label(this.obj.name, this.obj.pos + (0.2,-0.35));
     }
     
-    if (this.showAnchor) {
+    if (showAnchor) {
       for (int i = 0; i < this.obj.a.length; i += 1 ) {
         dot(obj.getAnchorPos(i));
       }
@@ -152,7 +158,7 @@ struct Capacitor {
 
 Obj operator cast(Capacitor capacitor) {return capacitor.obj;}
 
-void drawCoil(pair origin) {
+void drawCoil(pair origin, real orient = 0, pen p = currentpen) {
   guide Pcoil;
   path bounding_box = (0,1.2)--(0,-1.2)--(9,-1.2)--(9,1.2)--cycle;
   path l1 = ((0,0) -- (-3,0));
@@ -160,12 +166,11 @@ void drawCoil(pair origin) {
   for (int t = 0;t < 15; ++t) {
     Pcoil = Pcoil .. (t / 2 + 1 - cos(3.1415926 * t / 2), 1.2 * sin(3.1415926 * t / 2));
   }
-  draw(shift(origin) * scale(1/15) * shift(-4.5) * (l1 ^^ l2 ^^ Pcoil));
+  draw(shift(origin) * scale(1/15) * rotate(orient) * shift(3) * (l1 ^^ l2 ^^ Pcoil), p = p);
 }
 
 struct Inductor {
   Obj obj;
-  bool showAnchor = true;
   int orient;
 
   void operator init(pair pos, int orient = 0, string name) {
@@ -181,36 +186,40 @@ struct Inductor {
     Anchor[] aL;
     Anchor a;
     if (this.orient == 0) {
-      a = Anchor((-.5,0), DW);
+      a = Anchor((0,0), DW);
       aL.push(a);
-      a = Anchor((0.5,0),  DE);
+      a = Anchor((1,0),  DE);
       aL.push(a);
     }
     if (this.orient == 90) {
-      a = Anchor((0.5,1), DN);
+      a = Anchor((0,0), DS);
       aL.push(a);
-      a = Anchor((0.5,0), DS);
+      a = Anchor((0,1), DN);
       aL.push(a);
     }
     if (this.orient == -90) {
-      a = Anchor((0.5,0), DS);
+      a = Anchor((0,0), DN);
       aL.push(a);
-      a = Anchor((0.5,1), DN);
+      a = Anchor((0,-1), DS);
       aL.push(a);
     }
     this.obj.a = aL;
   }
 
-  void draw() {
-    drawCoil(this.obj.pos);
+  void draw(pen p = currentpen, bool showAnchor = false) {
+    drawCoil(this.obj.pos, this.orient, p = currentpen);
     
     if (this.orient == 0) {
-      label(this.obj.name, this.obj.pos + (0.0,0.3));
-    } else {
-      label(this.obj.name, this.obj.pos + (0.8,0.5));
+      label(this.obj.name, this.obj.pos + (0.5,0.2));
     }
-    
-    if (this.showAnchor) {
+    if (this.orient == 90) {
+      label(this.obj.name, this.obj.pos + (0.2,0.5));
+    }
+    if (this.orient == -90) {
+      label(this.obj.name, this.obj.pos + (0.2,-0.5));
+    }
+
+    if (showAnchor) {
       for (int i = 0; i < this.obj.a.length; i += 1 ) {
         dot(obj.getAnchorPos(i));
       }
