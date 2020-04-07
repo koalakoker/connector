@@ -41,3 +41,50 @@ bool sameDirection(int dir1, int dir2) {
   }
   return retVal;
 }
+
+int rotateDir(int dir, int angle) {
+  int retVal = dir;
+  if (angle == 90) {
+    if (dir == DN) {
+      retVal = DW;
+    }
+    if (dir == DW) {
+      retVal = DS;
+    }
+    if (dir == DS) {
+      retVal = DE;
+    }
+    if (dir == DE) {
+      retVal = DN;
+    }
+  }
+  if (angle == -90) {
+    if (dir == DN) {
+      retVal = DE;
+    }
+    if (dir == DE) {
+      retVal = DS;
+    }
+    if (dir == DS) {
+      retVal = DW;
+    }
+    if (dir == DW) {
+      retVal = DN;
+    }
+  }
+  if ((angle == 180) || (angle == -180)) {
+    if (dir == DN) {
+      retVal = DS;
+    }
+    if (dir == DW) {
+      retVal = DE;
+    }
+    if (dir == DS) {
+      retVal = DN;
+    }
+    if (dir == DE) {
+      retVal = DW;
+    }
+  }
+  return retVal;
+}

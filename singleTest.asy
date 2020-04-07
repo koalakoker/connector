@@ -60,12 +60,25 @@ import connector;
 //Capacitor C3 = Capacitor((0,0), -90, "$C_3$");
 //C3.draw();
 
-Fuse F1 = Fuse((0,0), 0, "$F_1$");
-F1.draw(showAnchor = true);
-Fuse F2 = Fuse((0,0), 90, "$F_2$");
-F2.draw(showAnchor = true);
-Fuse F3 = Fuse((0,0), -90, "$F_3$");
-F3.draw(showAnchor = true);
+//Fuse F1 = Fuse((0,0), 0, "$F_1$");
+//F1.draw(showAnchor = true);
+//Fuse F2 = Fuse((0,0), 90, "$F_2$");
+//F2.draw(showAnchor = true);
+//Fuse F3 = Fuse((0,0), -90, "$F_3$");
+//F3.draw(showAnchor = true);
 
-Node a = Node((0,0));
+Relay R1 = Relay((0,0), 180, "$R_1$");
+R1.draw(showAnchor = true);
+// Relay R2 = Relay((0,0), 90, "$R_2$");
+// R2.draw(showAnchor = true);
+// Relay R3 = Relay((0,0), -90, "$R_3$");
+// R3.draw(showAnchor = true);
+//Relay R4 = Relay((0,0), 180, "$R_4$");
+//R4.draw(showAnchor = true);
+
+Node a = Node((-2,-2));
 a.draw(red);
+drawAncorConnector(R1,0,a,0);
+drawAncorConnector(R1,1,a,1);
+drawAncorConnector(R1,2,a,2);
+drawAncorConnector(R1,3,a,3);
