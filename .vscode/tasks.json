@@ -6,7 +6,7 @@
     {
       "label": "Compile asy",
       "type": "shell",
-      "command": "asy ${file} -V",
+      "command": "asy ${fileBasename} -V",
       "group": {
         "kind": "build",
         "isDefault": true
