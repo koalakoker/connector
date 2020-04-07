@@ -31,3 +31,7 @@ struct Obj {
     }
   }
 }
+
+pair GetAnchorPos(Obj o, int i) {
+  return o.getAnchorPos(i);
+}

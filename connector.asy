@@ -192,7 +192,7 @@ path drawAnchorConnectorSameDir(Obj o1, int i1, Obj o2, int i2, real r1 = 0.5, r
   return p;
 }
 
-void drawAncorConnector(Obj o1, int i1, Obj o2, int i2, real r1 = 0.5, real r2 = 0.5, real r3 = 0.5, arrowbar arrow = ArcArrow(), pen pen = currentpen) {
+void drawAnchorConnector(Obj o1, int i1, Obj o2, int i2, real r1 = 0.5, real r2 = 0.5, real r3 = 0.5, arrowbar arrow = None, pen pen = currentpen) {
   path p;
   pair p1 = o1.getAnchorPos(i1);
   pair p2 = o2.getAnchorPos(i2);

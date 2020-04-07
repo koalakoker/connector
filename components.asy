@@ -235,7 +235,7 @@ void drawFuse(pair origin, real orient = 0, pen p = currentpen) {
   path a2 = arc((r+.5,0), r, 180, 0   );
   path l1 = ((0 ,0) -- (.3,0));
   path l2 = ((.7,0) -- (1 ,0));
-  draw(rotate(orient) * (l1 ^^ a1 ^^ a2 ^^ l2), p = p);
+  draw(shift(origin) * rotate(orient) * (l1 ^^ a1 ^^ a2 ^^ l2), p = p);
 }
 
 struct Fuse {
@@ -306,14 +306,14 @@ void drawRelay(pair origin, real orient = 0, pen p = currentpen) {
   path a4 = arc((r + .7, 0), r, 180, 0 );
   path l1 = ((0, 0) -- (.1, 0));
   path l2 = ((.9,0) -- ( 1, 0));
-  draw(rotate(orient) * (l1 ^^ a1 ^^ a2 ^^ a3 ^^ a4 ^^ l2), p = p);
+  draw(shift(origin) * rotate(orient) * (l1 ^^ a1 ^^ a2 ^^ a3 ^^ a4 ^^ l2), p = p);
   path p1 = (0  ,.4) -- (.35, .4);
   path p2 = (.65,.4) -- (1,   .4);
   path p3 = rotate(-30, (.65,.4)) * ((.35, .4) -- (.65,.4));
-  draw(rotate(orient) * (p1 ^^ p2 ^^ p3), p = p);
-  dot (rotate(orient) * ((.35, .4) ^^ (.65,.4)), p = p);
+  draw(shift(origin) * rotate(orient) * (p1 ^^ p2 ^^ p3), p = p);
+  dot (shift(origin) * rotate(orient) * ((.35, .4) ^^ (.65,.4)), p = p);
   path centerBox = box((.1,.19) , (.9,.21));
-  fill(rotate(orient) * centerBox, p = p);
+  fill(shift(origin) * rotate(orient) * centerBox, p = p);
 }
 
 struct Relay {
@@ -346,7 +346,7 @@ struct Relay {
   void draw(pen p = currentpen, bool showAnchor = false) {
     drawRelay(this.obj.pos, this.orient, p = currentpen);
     
-    label(this.obj.name, this.obj.pos + rotate(this.orient) * (0.6,0.5));
+    label(this.obj.name, this.obj.pos + rotate(this.orient) * (0.7,0.6));
 
     if (showAnchor) {
       for (int i = 0; i < this.obj.a.length; i += 1 ) {
