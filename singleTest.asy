@@ -38,3 +38,6 @@ drawAncorConnector(I1,1, I3, 1, 0.1, arrow = None);
 drawAncorConnector(I3,1, I5, 1, 0.1, arrow = None);
 drawAncorConnector(r1,1, r2, 1, 0.1, arrow = None);
 drawAncorConnector(r2,1, r3, 1, 0.1, arrow = None);
+
+Inductor L1 = Inductor((0,-4),"$L_1$");
+L1.draw();
