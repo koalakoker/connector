@@ -5,11 +5,13 @@ struct Obj {
   real len;
   Anchor[] a;
   string name;
+  align align;
 
-  void operator init(pair pos, real len, string name) {
+  void operator init(pair pos, real len, string name, align align = NoAlign) {
     this.pos = pos;
     this.len = len;
     this.name = name;
+    this.align = align;
   }
 
   void addAnchorPoint(Anchor a) {

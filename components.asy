@@ -1,5 +1,35 @@
 import obj;
 
+struct Node {
+  Obj obj;
+  
+  void operator init(pair pos, string name = "", align align = NoAlign) {
+    
+    obj.operator init(pos, 0, name, align);
+    
+    Anchor[] aL;
+    Anchor a;
+    a = Anchor((0, 0), DN);
+    aL.push(a);
+    a = Anchor((0, 0), DS);
+    aL.push(a);
+    a = Anchor((0, 0), DE);
+    aL.push(a);
+    a = Anchor((0, 0), DW);
+    aL.push(a);
+    this.obj.a = aL;
+  }
+
+  void draw() {
+    if (this.obj.name != "") {
+      label(this.obj.name, this.obj.pos, align = this.obj.align);
+    }
+    dot(obj.pos);
+  }
+}
+
+Obj operator cast(Node node) {return node.obj;}
+
 struct Resistor {
   Obj obj;
   path p;
@@ -9,7 +39,7 @@ struct Resistor {
   void operator init(pair pos, int orient = 0, string name) {
     if ((orient != 0) && (orient != 90) && (orient != -90)) {
       this.orient = 0;
-      write ("Wrong orient in R:" + name + ". Forced to 0");
+      write ("Wrong orient in " + name + ". Forced to 0");
     } else {
       this.orient = orient;
     }
@@ -70,7 +100,7 @@ struct Capacitor {
   void operator init(pair pos, int orient = 0, string name) {
     if ((orient != 0) && (orient != 90) && (orient != -90)) {
       this.orient = 0;
-      write ("Wrong orient in C:" + name + ". Forced to 0");
+      write ("Wrong orient in " + name + ". Forced to 0");
     } else {
       this.orient = orient;
     }
@@ -121,6 +151,74 @@ struct Capacitor {
 }
 
 Obj operator cast(Capacitor capacitor) {return capacitor.obj;}
+
+void drawCoil(pair origin) {
+  guide Pcoil;
+  path bounding_box = (0,1.2)--(0,-1.2)--(9,-1.2)--(9,1.2)--cycle;
+  path l1 = ((0,0) -- (-3,0));
+  path l2 = ((9,0) -- (12,0));
+  for (int t = 0;t < 15; ++t) {
+    Pcoil = Pcoil .. (t / 2 + 1 - cos(3.1415926 * t / 2), 1.2 * sin(3.1415926 * t / 2));
+  }
+  draw(shift(origin) * scale(1/15) * shift(-4.5) * (l1 ^^ l2 ^^ Pcoil));
+}
+
+struct Inductor {
+  Obj obj;
+  bool showAnchor = true;
+  int orient;
+
+  void operator init(pair pos, int orient = 0, string name) {
+    if ((orient != 0) && (orient != 90) && (orient != -90)) {
+      this.orient = 0;
+      write ("Wrong orient in " + name + ". Forced to 0");
+    } else {
+      this.orient = orient;
+    }
+
+    obj.operator init(pos, 0, name);
+    
+    Anchor[] aL;
+    Anchor a;
+    if (this.orient == 0) {
+      a = Anchor((-.5,0), DW);
+      aL.push(a);
+      a = Anchor((0.5,0),  DE);
+      aL.push(a);
+    }
+    if (this.orient == 90) {
+      a = Anchor((0.5,1), DN);
+      aL.push(a);
+      a = Anchor((0.5,0), DS);
+      aL.push(a);
+    }
+    if (this.orient == -90) {
+      a = Anchor((0.5,0), DS);
+      aL.push(a);
+      a = Anchor((0.5,1), DN);
+      aL.push(a);
+    }
+    this.obj.a = aL;
+  }
+
+  void draw() {
+    drawCoil(this.obj.pos);
+    
+    if (this.orient == 0) {
+      label(this.obj.name, this.obj.pos + (0.0,0.3));
+    } else {
+      label(this.obj.name, this.obj.pos + (0.8,0.5));
+    }
+    
+    if (this.showAnchor) {
+      for (int i = 0; i < this.obj.a.length; i += 1 ) {
+        dot(obj.getAnchorPos(i));
+      }
+    }
+  }
+}
+
+Obj operator cast(Inductor inductor) {return inductor.obj;}
 
 void drawIGBT(pair origin, bool drawAncorPoints = false) {
 
