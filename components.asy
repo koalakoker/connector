@@ -36,7 +36,12 @@ void drawRelay(pair origin, real orient = 0, pen p = currentpen) {
   draw(shift(origin) * rotate(orient) * (p1 ^^ p2 ^^ p3), p = p);
   dot (shift(origin) * rotate(orient) * ((.35, .4) ^^ (.65,.4)), p = p);
   path centerBox = box((.1,.19) , (.9,.21));
-  fill(shift(origin) * rotate(orient) * centerBox, p = p);}
+  fill(shift(origin) * rotate(orient) * centerBox, p = p);
+  
+  // Track rect
+  draw(shift(origin) * rotate(orient) * box((-.1,-.1),(1.1,.6)), p = Dotted(p));
+
+  }
 
 void drawIGBT (pair origin, real orient = 0, pen p = currentpen) {
     draw(shift(origin) * ((0,0)--(0.25,0)), p = p);
@@ -370,7 +375,7 @@ struct Relay {
   void draw(pen p = currentpen, bool showAnchor = false) {
     drawRelay(this.obj.pos, this.orient, p = currentpen);
     
-    label(this.obj.name, this.obj.pos + rotate(this.orient) * (0.7,0.6));
+    label(this.obj.name, this.obj.pos + rotate(this.orient) * (0.7,0.8));
 
     if (showAnchor) {
       for (int i = 0; i < this.obj.a.length; i += 1 ) {
