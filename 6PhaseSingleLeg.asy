@@ -33,9 +33,9 @@ F1.draw();
 Node vbus = Node(GetAnchorPos(F1, 1),"$V_{bus}$", align = NE);
 vbus.draw();
 
-Node gnd = Node(GetAnchorPos(Q2, 2) - (0,.5),"$gnd$", align = S);
-gnd.draw();
-drawAnchorConnector(Q2,2,gnd,0);
+GndPower gndP = GndPower(GetAnchorPos(Q2, 2) - (0,.5), 0, "");
+gndP.draw();
+drawAnchorConnector(Q2,2,gndP,0);
 
 Node out = Node(GetAnchorPos(Q1,2) - (0,.2));
 out.draw();
@@ -59,6 +59,10 @@ Q3.draw();
 
 Node g3 = Node(GetAnchorPos(Q3,0), "$g_{Q3}$", align = W);
 g3.draw(smallDot);
+
+GndSignal gndS = GndSignal(GetAnchorPos(Q3, 2) - (0,.3), 0, "");
+gndS.draw();
+drawAnchorConnector(Q3,2,gndS,0);
 
 drawAnchorConnector(R1, 1, Q3, 1);
 
