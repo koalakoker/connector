@@ -1,5 +1,77 @@
 import obj;
 
+// Draw
+void drawCoil (pair origin, real orient = 0, pen p = currentpen) {
+  guide Pcoil;
+  path bounding_box = (0,1.2)--(0,-1.2)--(9,-1.2)--(9,1.2)--cycle;
+  path l1 = ((0,0) -- (-3,0));
+  path l2 = ((9,0) -- (12,0));
+  for (int t = 0;t < 15; ++t) {
+    Pcoil = Pcoil .. (t / 2 + 1 - cos(3.1415926 * t / 2), 1.2 * sin(3.1415926 * t / 2));
+  }
+  draw(shift(origin) * scale(1/15) * rotate(orient) * shift(3) * (l1 ^^ l2 ^^ Pcoil), p = p);}
+
+void drawFuse (pair origin, real orient = 0, pen p = currentpen) {
+  real r = 0.1;
+  path a1 = arc((r+.3,0), r, 180, 360 );
+  path a2 = arc((r+.5,0), r, 180, 0   );
+  path l1 = ((0 ,0) -- (.3,0));
+  path l2 = ((.7,0) -- (1 ,0));
+  draw(shift(origin) * rotate(orient) * (l1 ^^ a1 ^^ a2 ^^ l2), p = p);}
+
+void drawRelay(pair origin, real orient = 0, pen p = currentpen) {
+  real r = 0.1;
+  path a1 = arc((r + .1, 0), r, 180, 0 );
+  path a2 = arc((r + .3, 0), r, 180, 0 );
+  path a3 = arc((r + .5, 0), r, 180, 0 );
+  path a4 = arc((r + .7, 0), r, 180, 0 );
+  path l1 = ((0, 0) -- (.1, 0));
+  path l2 = ((.9,0) -- ( 1, 0));
+  draw(shift(origin) * rotate(orient) * (l1 ^^ a1 ^^ a2 ^^ a3 ^^ a4 ^^ l2), p = p);
+  path p1 = (0  ,.4) -- (.35, .4);
+  path p2 = (.65,.4) -- (1,   .4);
+  path p3 = rotate(-30, (.65,.4)) * ((.35, .4) -- (.65,.4));
+  draw(shift(origin) * rotate(orient) * (p1 ^^ p2 ^^ p3), p = p);
+  dot (shift(origin) * rotate(orient) * ((.35, .4) ^^ (.65,.4)), p = p);
+  path centerBox = box((.1,.19) , (.9,.21));
+  fill(shift(origin) * rotate(orient) * centerBox, p = p);}
+
+void drawIGBT (pair origin, real orient = 0, pen p = currentpen) {
+    draw(shift(origin) * ((0,0)--(0.25,0)), p = p);
+    draw(shift(origin) * ((0.25,-0.1)--(0.25,0.1)), p = p);
+    draw(shift(origin) * ((0.3,-0.2)--(0.3,0.2)), p = p);
+    draw(shift(origin) * ((0.3,0.1 )--(0.5, 0.3)--(0.5,0.5)), p = p);
+    draw(shift(origin) * ((0.3,-0.1)--(0.5,-0.3)--(0.5,-0.5)), arrow = Arrow(position = MidPoint) , p = p);
+    
+    //dot(shift(origin) * ((.5,.4) ^^ (.5,-.4)), p = p + 5.0);
+}
+
+void drawMOS(pair origin, bool drawAncorPoints = false) {
+
+    defaultpen(2);
+
+    draw(shift(origin) * ((0,0)--(0.25,0)));
+    draw(shift(origin) * ((0.25,-0.1)--(0.25,0.1)));
+    draw(shift(origin) * ((0.3,-0.2)--(0.3,0.2)));
+    
+    draw(shift(origin) * ((0.3,0.1 )--(0.5, 0.1)--(0.5,0.5)));
+    draw(shift(origin) * ((0.3,-0.1)--(0.5,-0.1)), arrow = Arrow(position = EndPoint) );
+    draw(shift(origin) * ((0.5,-0.1)--(0.5,-0.5)));
+    
+    if (drawAncorPoints) {
+        dot(shift(origin) * (0,0), p = black + 5.0);
+        dot(shift(origin) * (.5,.5), p = black + 5.0);
+        dot(shift(origin) * (.5,-.5), p = black + 5.0);
+    }
+
+    defaultpen(1);}
+
+void drawDiode(pair origin, real orient = 0, pen p = currentpen) {
+  draw(shift(origin) * rotate(orient) * ((0, 0)--(1, 0)));
+  fill(shift(origin) * rotate(orient) * ((.4, -.1)--(.4, .1)--(.6, 0)--cycle));
+  draw(shift(origin) * rotate(orient) * ((.6, -.1)--(.6, .1)));}
+
+// Struct
 struct Node {
   Obj obj;
   
@@ -25,10 +97,7 @@ struct Node {
       label(this.obj.name, this.obj.pos, align = this.obj.align);
     }
     dot(obj.pos, p);
-  }
-}
-
-Obj operator cast(Node node) {return node.obj;}
+  }}
 
 struct Resistor {
   Obj obj;
@@ -89,10 +158,7 @@ struct Resistor {
         dot(obj.getAnchorPos(i));
       }
     }
-  }
-}
-
-Obj operator cast(Resistor resistor) {return resistor.obj;}
+  }}
 
 struct Capacitor {
   Obj obj;
@@ -153,21 +219,7 @@ struct Capacitor {
         dot(obj.getAnchorPos(i));
       }
     }
-  }
-}
-
-Obj operator cast(Capacitor capacitor) {return capacitor.obj;}
-
-void drawCoil(pair origin, real orient = 0, pen p = currentpen) {
-  guide Pcoil;
-  path bounding_box = (0,1.2)--(0,-1.2)--(9,-1.2)--(9,1.2)--cycle;
-  path l1 = ((0,0) -- (-3,0));
-  path l2 = ((9,0) -- (12,0));
-  for (int t = 0;t < 15; ++t) {
-    Pcoil = Pcoil .. (t / 2 + 1 - cos(3.1415926 * t / 2), 1.2 * sin(3.1415926 * t / 2));
-  }
-  draw(shift(origin) * scale(1/15) * rotate(orient) * shift(3) * (l1 ^^ l2 ^^ Pcoil), p = p);
-}
+  }}
 
 struct Inductor {
   Obj obj;
@@ -224,19 +276,7 @@ struct Inductor {
         dot(obj.getAnchorPos(i));
       }
     }
-  }
-}
-
-Obj operator cast(Inductor inductor) {return inductor.obj;}
-
-void drawFuse(pair origin, real orient = 0, pen p = currentpen) {
-  real r = 0.1;
-  path a1 = arc((r+.3,0), r, 180, 360 );
-  path a2 = arc((r+.5,0), r, 180, 0   );
-  path l1 = ((0 ,0) -- (.3,0));
-  path l2 = ((.7,0) -- (1 ,0));
-  draw(shift(origin) * rotate(orient) * (l1 ^^ a1 ^^ a2 ^^ l2), p = p);
-}
+  }}
 
 struct Fuse {
   Obj obj;
@@ -293,28 +333,7 @@ struct Fuse {
         dot(obj.getAnchorPos(i));
       }
     }
-  }
-}
-
-Obj operator cast(Fuse fuse) {return fuse.obj;}
-
-void drawRelay(pair origin, real orient = 0, pen p = currentpen) {
-  real r = 0.1;
-  path a1 = arc((r + .1, 0), r, 180, 0 );
-  path a2 = arc((r + .3, 0), r, 180, 0 );
-  path a3 = arc((r + .5, 0), r, 180, 0 );
-  path a4 = arc((r + .7, 0), r, 180, 0 );
-  path l1 = ((0, 0) -- (.1, 0));
-  path l2 = ((.9,0) -- ( 1, 0));
-  draw(shift(origin) * rotate(orient) * (l1 ^^ a1 ^^ a2 ^^ a3 ^^ a4 ^^ l2), p = p);
-  path p1 = (0  ,.4) -- (.35, .4);
-  path p2 = (.65,.4) -- (1,   .4);
-  path p3 = rotate(-30, (.65,.4)) * ((.35, .4) -- (.65,.4));
-  draw(shift(origin) * rotate(orient) * (p1 ^^ p2 ^^ p3), p = p);
-  dot (shift(origin) * rotate(orient) * ((.35, .4) ^^ (.65,.4)), p = p);
-  path centerBox = box((.1,.19) , (.9,.21));
-  fill(shift(origin) * rotate(orient) * centerBox, p = p);
-}
+  }}
 
 struct Relay {
   Obj obj;
@@ -353,35 +372,7 @@ struct Relay {
         dot(obj.getAnchorPos(i));
       }
     }
-  }
-}
-
-Obj operator cast(Relay relay) {return relay.obj;}
-
-void drawIGBT(pair origin, bool drawAncorPoints = false) {
-
-    defaultpen(2);
-
-    draw(shift(origin) * ((0,0)--(0.25,0)));
-    draw(shift(origin) * ((0.25,-0.1)--(0.25,0.1)));
-    draw(shift(origin) * ((0.3,-0.2)--(0.3,0.2)));
-    draw(shift(origin) * ((0.3,0.1 )--(0.5, 0.3)--(0.5,0.5)));
-    draw(shift(origin) * ((0.3,-0.1)--(0.5,-0.3)--(0.5,-0.5)), arrow = Arrow(position = MidPoint) );
-    draw(shift(origin) * ((0.5,-0.4)--(0.7,-0.4)--(0.7,0.4)--(0.5,0.4)));
-
-    fill(shift(origin) * ((.6,-.1)--(.8,-.1)--(0.7,0.1)--cycle));
-    draw(shift(origin) * ((.6,.1)--(.8,.1)));
-
-    dot(shift(origin) * ((.5,.4) ^^ (.5,-.4)), p = black + 5.0);
-
-    if (drawAncorPoints) {
-        dot(shift(origin) * (0,0), p = black + 5.0);
-        dot(shift(origin) * (.5,.5), p = black + 5.0);
-        dot(shift(origin) * (.5,-.5), p = black + 5.0);
-    }
-
-    defaultpen(1);
-}
+  }}
 
 struct Igbt {
   Obj obj;
@@ -419,31 +410,7 @@ struct Igbt {
         dot(obj.getAnchorPos(i));
       }
     }
-  }
-}
-
-Obj operator cast(Igbt igbt) {return igbt.obj;}
-
-void drawMOS(pair origin, bool drawAncorPoints = false) {
-
-    defaultpen(2);
-
-    draw(shift(origin) * ((0,0)--(0.25,0)));
-    draw(shift(origin) * ((0.25,-0.1)--(0.25,0.1)));
-    draw(shift(origin) * ((0.3,-0.2)--(0.3,0.2)));
-    
-    draw(shift(origin) * ((0.3,0.1 )--(0.5, 0.1)--(0.5,0.5)));
-    draw(shift(origin) * ((0.3,-0.1)--(0.5,-0.1)), arrow = Arrow(position = EndPoint) );
-    draw(shift(origin) * ((0.5,-0.1)--(0.5,-0.5)));
-    
-    if (drawAncorPoints) {
-        dot(shift(origin) * (0,0), p = black + 5.0);
-        dot(shift(origin) * (.5,.5), p = black + 5.0);
-        dot(shift(origin) * (.5,-.5), p = black + 5.0);
-    }
-
-    defaultpen(1);
-}
+  }}
 
 struct Mos {
   Obj obj;
@@ -475,16 +442,7 @@ struct Mos {
         dot(obj.getAnchorPos(i));
       }
     }
-  }
-}
-
-Obj operator cast(Mos mos) {return mos.obj;}
-
-void drawDiode(pair origin, real orient = 0, pen p = currentpen) {
-  draw(shift(origin) * rotate(orient) * ((0, 0)--(1, 0)));
-  fill(shift(origin) * rotate(orient) * ((.4, -.1)--(.4, .1)--(.6, 0)--cycle));
-  draw(shift(origin) * rotate(orient) * ((.6, -.1)--(.6, .1)));
-}
+  }}
 
 struct Diode {
   Obj obj;
@@ -519,7 +477,15 @@ struct Diode {
         dot(obj.getAnchorPos(i));
       }
     }
-  }
-}
+  }}
 
+// Cast
+Obj operator cast(Node node) {return node.obj;}
+Obj operator cast(Resistor resistor) {return resistor.obj;}
+Obj operator cast(Capacitor capacitor) {return capacitor.obj;}
+Obj operator cast(Inductor inductor) {return inductor.obj;}
+Obj operator cast(Fuse fuse) {return fuse.obj;}
+Obj operator cast(Relay relay) {return relay.obj;}
+Obj operator cast(Igbt igbt) {return igbt.obj;}
 Obj operator cast(Diode diode) {return diode.obj;}
+Obj operator cast(Mos mos) {return mos.obj;}

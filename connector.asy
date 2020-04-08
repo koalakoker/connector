@@ -311,3 +311,12 @@ void drawAnchorConnector(Obj o1, int i1, Obj o2, int i2,
   }
   draw(p, arrow = arrow, p = pen);
 }
+
+void ConnectParallel(Obj o1, int i11, int i12, Obj o2, int i21, int i22, int dir) {
+  int idx1 = AddAnchorPoint(o1, GetAnchorPos(o1, i11), dir);
+  int idx2 = AddAnchorPoint(o2, GetAnchorPos(o2, i21), rotateDir(dir,180));
+  drawAnchorConnector(o1, idx1, o2, idx2, 0.05, drawNode1 = true);
+  idx1 = AddAnchorPoint(o1, GetAnchorPos(o1, i12), dir);
+  idx2 = AddAnchorPoint(o2, GetAnchorPos(o2, i22), rotateDir(dir,180));
+  drawAnchorConnector(o1, idx1, o2, idx2, 0.05, drawNode1 = true);
+}
