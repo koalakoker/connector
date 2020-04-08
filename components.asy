@@ -1,5 +1,7 @@
 import obj;
 
+pen smallDot = currentpen + 5;
+
 // Draw
 void drawCoil (pair origin, real orient = 0, pen p = currentpen) {
   guide Pcoil;

@@ -15,9 +15,9 @@ Igbt Q2 = Igbt((0,-1.4), "$Q_2$");
 Q2.draw();
 
 Node g1 = Node(GetAnchorPos(Q1,0), "$g_{Q1}$", align = W);
-g1.draw();
+g1.draw(smallDot);
 Node g2 = Node(GetAnchorPos(Q2,0), "$g_{Q2}$", align = W);
-g2.draw();
+g2.draw(smallDot);
 
 Diode D1 = Diode(GetAnchorPos(Q1,2) + (0.3,0), 90, "$D_1$");
 D1.draw();
@@ -30,7 +30,7 @@ ConnectParallel(Q2,2,1,D2,0,1,DE);
 Fuse F1 = Fuse(GetAnchorPos(Q1, 1), 90, "$F_1$");
 F1.draw();
 
-Node vbus = Node(GetAnchorPos(F1, 1),"$V_{bus}$", align = N);
+Node vbus = Node(GetAnchorPos(F1, 1),"$V_{bus}$", align = NE);
 vbus.draw();
 
 Node gnd = Node(GetAnchorPos(Q2, 2) - (0,.5),"$gnd$", align = S);
@@ -56,6 +56,9 @@ Vr.draw();
 
 Mos Q3 = Mos(GetAnchorPos(R1, 1) + (-.2,-1),"$Q_3$");
 Q3.draw();
+
+Node g3 = Node(GetAnchorPos(Q3,0), "$g_{Q3}$", align = W);
+g3.draw(smallDot);
 
 drawAnchorConnector(R1, 1, Q3, 1);
 
