@@ -1,4 +1,6 @@
-settings.outformat="pdf";
+//settings.outformat="pdf";
+settings.outformat="png";
+settings.render = 16;
 settings.prc = false; 
 size(10cm);
 
