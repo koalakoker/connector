@@ -1,5 +1,5 @@
-//settings.outformat="pdf";
-settings.outformat="png";
+settings.outformat="pdf";
+//settings.outformat="png";
 settings.render = 16;
 settings.prc = false; 
 size(10cm);
@@ -7,9 +7,6 @@ size(10cm);
 import obj;
 import components;
 import connector;
-
-int idx1;
-int idx2;
 
 Igbt Q1 = Igbt((0,0), "$Q_1$");
 Q1.draw();

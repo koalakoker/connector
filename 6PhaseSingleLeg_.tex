@@ -1,0 +1,111 @@
+\documentclass[12pt]{article}
+\usepackage{ifluatex}\ifluatex
+\ifx\pdfpagewidth\undefined\let\pdfpagewidth\paperwidth\fi
+\ifx\pdfpageheight\undefined\let\pdfpageheight\paperheight\fi\else
+\let\paperwidthsave\paperwidth\let\paperwidth\undefined
+\usepackage{graphicx}
+\let\paperwidth\paperwidthsave\fi
+\newbox\ASYbox
+\newdimen\ASYdimen
+\def\ASYprefix{}
+\long\def\ASYbase#1#2{\leavevmode\setbox\ASYbox=\hbox{#1}%\ASYdimen=\ht\ASYbox%
+\setbox\ASYbox=\hbox{#2}\lower\ASYdimen\box\ASYbox}
+\long\def\ASYaligned(#1,#2)(#3,#4)#5#6#7{\leavevmode%
+\setbox\ASYbox=\hbox{#7}%
+\setbox\ASYbox\hbox{\ASYdimen=\ht\ASYbox%
+\advance\ASYdimen by\dp\ASYbox\kern#3\wd\ASYbox\raise#4\ASYdimen\box\ASYbox}%
+\setbox\ASYbox=\hbox{#5\wd\ASYbox 0pt\dp\ASYbox 0pt\ht\ASYbox 0pt\box\ASYbox#6}%
+\hbox to 0pt{\kern#1pt\raise#2pt\box\ASYbox\hss}}%
+\long\def\ASYalignT(#1,#2)(#3,#4)#5#6{%
+\ASYaligned(#1,#2)(#3,#4){%
+\special{ps:gsave currentpoint currentpoint translate [#5 0 0] concat neg exch neg exch translate}%
+}{%
+\special{ps:currentpoint grestore moveto}%
+}{#6}}
+\long\def\ASYalign(#1,#2)(#3,#4)#5{\ASYaligned(#1,#2)(#3,#4){}{}{#5}}
+\def\ASYraw#1{
+currentpoint currentpoint translate matrix currentmatrix
+100 12 div -100 12 div scale
+#1
+setmatrix neg exch neg exch translate}
+\usepackage{graphicx}
+\makeatletter
+\def\Ginclude@eps#1{%
+ \message{<#1>}%
+  \bgroup
+  \def\@tempa{!}%
+  \dimen@\Gin@req@width
+  \dimen@ii.1bp%
+  \divide\dimen@\dimen@ii
+  \@tempdima\Gin@req@height
+  \divide\@tempdima\dimen@ii
+    \special{PSfile=#1\space
+      llx=\Gin@llx\space
+      lly=\Gin@lly\space
+      urx=\Gin@urx\space
+      ury=\Gin@ury\space
+      \ifx\Gin@scalex\@tempa\else rwi=\number\dimen@\space\fi
+      \ifx\Gin@scaley\@tempa\else rhi=\number\@tempdima\space\fi
+      \ifGin@clip clip\fi}%
+  \egroup}
+\makeatother
+\usepackage{color}
+\setlength{\unitlength}{1pt}%
+\pagestyle{empty}
+\textheight=301.464567bp
+\textwidth=253.072519bp
+\begin{document}
+\makeatletter%
+\let\ASYencoding\f@encoding%
+\let\ASYfamily\f@family%
+\let\ASYseries\f@series%
+\let\ASYshape\f@shape%
+\makeatother%
+{\catcode`"=12%
+\includegraphics[bb=-22.080354 -185.591860 212.992165 97.872707]{6PhaseSingleLeg_0.eps}%
+}%
+\kern -235.954041pt%
+\definecolor{ASYcolor}{gray}{0.000000}\color{ASYcolor}%
+\fontsize{12.000000}{14.400000}\selectfont%
+\usefont{\ASYencoding}{\ASYfamily}{\ASYseries}{\ASYshape}%
+\ASYalign(33.388892,203.126435)(-0.500000,-0.278483){$Q_1$}%
+\definecolor{ASYcolor}{gray}{0.000000}\color{ASYcolor}%
+\fontsize{12.000000}{14.400000}\selectfont%
+\ASYalign(33.388892,124.546273)(-0.500000,-0.278483){$Q_2$}%
+\definecolor{ASYcolor}{gray}{0.000000}\color{ASYcolor}%
+\fontsize{12.000000}{14.400000}\selectfont%
+\ASYalign(18.563155,186.287829)(-1.000000,-0.106259){$g_{Q1}$}%
+\definecolor{ASYcolor}{gray}{0.000000}\color{ASYcolor}%
+\fontsize{12.000000}{14.400000}\selectfont%
+\ASYalign(18.563155,107.707667)(-1.000000,-0.106259){$g_{Q2}$}%
+\definecolor{ASYcolor}{gray}{0.000000}\color{ASYcolor}%
+\fontsize{12.000000}{14.400000}\selectfont%
+\ASYalign(55.840367,186.287829)(-0.500000,-0.320001){$D_1$}%
+\definecolor{ASYcolor}{gray}{0.000000}\color{ASYcolor}%
+\fontsize{12.000000}{14.400000}\selectfont%
+\ASYalign(55.840367,107.707667)(-0.500000,-0.320001){$D_2$}%
+\definecolor{ASYcolor}{gray}{0.000000}\color{ASYcolor}%
+\fontsize{12.000000}{14.400000}\selectfont%
+\ASYalign(61.453236,242.416516)(-0.500000,-0.320001){$F_1$}%
+\definecolor{ASYcolor}{gray}{0.000000}\color{ASYcolor}%
+\fontsize{12.000000}{14.400000}\selectfont%
+\ASYalign(52.773083,273.026444)(0.000000,0.179999){$V_{bus}$}%
+\definecolor{ASYcolor}{gray}{0.000000}\color{ASYcolor}%
+\fontsize{12.000000}{14.400000}\selectfont%
+\ASYalign(145.646266,169.449223)(-0.500000,-0.320001){$R_1$}%
+\definecolor{ASYcolor}{gray}{0.000000}\color{ASYcolor}%
+\fontsize{12.000000}{14.400000}\selectfont%
+\ASYalign(207.387822,158.223486)(-0.500000,-0.209616){$Motor_{ph}$}%
+\definecolor{ASYcolor}{gray}{0.000000}\color{ASYcolor}%
+\fontsize{12.000000}{14.400000}\selectfont%
+\ASYalign(85.917579,124.546273)(-1.000000,-0.320001){$V_R$}%
+\definecolor{ASYcolor}{gray}{0.000000}\color{ASYcolor}%
+\fontsize{12.000000}{14.400000}\selectfont%
+\ASYalign(162.484873,85.256192)(-0.500000,-0.278483){$Q_3$}%
+\definecolor{ASYcolor}{gray}{0.000000}\color{ASYcolor}%
+\fontsize{12.000000}{14.400000}\selectfont%
+\ASYalign(147.659135,68.417586)(-1.000000,-0.106259){$g_{Q3}$}%
+\definecolor{ASYcolor}{gray}{0.000000}\color{ASYcolor}%
+\fontsize{12.000000}{14.400000}\selectfont%
+\ASYalign(134.420529,96.481930)(-0.500000,-0.320001){$D_3$}%
+\end{document}
