@@ -239,10 +239,10 @@ struct Capacitor {
       label(this.obj.name, this.obj.pos + (0.35,0.2));
     }
     if (this.orient == 90) {
-      label(this.obj.name, this.obj.pos + (0.2,0.35));
+      label(this.obj.name, this.obj.pos + (0.3,0.35));
     }
     if (this.orient == -90) {
-      label(this.obj.name, this.obj.pos + (0.2,-0.35));
+      label(this.obj.name, this.obj.pos + (0.3,-0.35));
     }
     
     if (showAnchor) {
