@@ -21,7 +21,7 @@ void drawFuse (pair origin, real orient = 0, pen p = currentpen) {
   path l2 = ((.7,0) -- (1 ,0));
   draw(shift(origin) * rotate(orient) * (l1 ^^ a1 ^^ a2 ^^ l2), p = p);}
 
-void drawRelay(pair origin, real orient = 0, pen p = currentpen) {
+void drawRelay(pair origin, real orient = 0, pen p = currentpen, real status = 0) {
   real r = 0.1;
   path a1 = arc((r + .1, 0), r, 180, 0 );
   path a2 = arc((r + .3, 0), r, 180, 0 );
@@ -32,7 +32,14 @@ void drawRelay(pair origin, real orient = 0, pen p = currentpen) {
   draw(shift(origin) * rotate(orient) * (l1 ^^ a1 ^^ a2 ^^ a3 ^^ a4 ^^ l2), p = p);
   path p1 = (0  ,.4) -- (.35, .4);
   path p2 = (.65,.4) -- (1,   .4);
-  path p3 = rotate(-30, (.65,.4)) * ((.35, .4) -- (.65,.4));
+  
+  path p3;
+  if (status == 0) {
+    p3 = rotate(-30, (.65,.4)) * ((.35, .4) -- (.65,.4));
+  } else {
+    p3 = shift((0,0.1)) * ((.35, .4) -- (.65,.4));
+  }
+  
   draw(shift(origin) * rotate(orient) * (p1 ^^ p2 ^^ p3), p = p);
   dot (shift(origin) * rotate(orient) * ((.35, .4) ^^ (.65,.4)), p = p);
   path centerBox = box((.1,.19) , (.9,.21));
@@ -393,8 +400,9 @@ struct Relay {
     this.obj.a = aL;
   }
 
-  void draw(pen p = currentpen, bool showAnchor = false) {
-    drawRelay(this.obj.pos, this.orient, p = currentpen);
+  void draw(pen p = currentpen, bool showAnchor = false, real status = 0) {
+    // Status 0 = Open, 1 = Closed
+    drawRelay(this.obj.pos, this.orient, p = currentpen, status);
     
     label(this.obj.name, this.obj.pos + rotate(this.orient) * (0.7,0.8));
 

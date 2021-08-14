@@ -1,3 +1,4 @@
 connector.code-workspace
 texput.aux
 texput.log
+*.tex
