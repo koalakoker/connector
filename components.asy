@@ -194,7 +194,12 @@ struct Resistor {
     if (showAnchor) {
       for (int i = 0; i < this.obj.a.length; i += 1 ) {
         dot(obj.getAnchorPos(i));
+        label((string)i,obj.getAnchorPos(i) + (0,0.1) );
       }
+    }
+
+    if (true) {
+      label("(0,0)", (0,0) + (0,-0.1) );
     }
   }}
 
