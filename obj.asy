@@ -1,4 +1,5 @@
 import anchor;
+import drawOptions;
 
 struct Obj {
   pair pos;
@@ -23,12 +24,18 @@ struct Obj {
     return this.pos + this.a[i].pos;
   }
 
-  void draw() {
-    real halfLen = this.len / 2;
-    draw(box(this.pos - (halfLen, halfLen), this.pos + (halfLen, halfLen)));
-    label(this.name, this.pos);
-    for (int i = 0; i < this.a.length; i += 1 ) {
-      dot(getAnchorPos(i));
+  void draw(DrawOption drawOpt) {
+    if (drawOpt != null) {
+      if (drawOpt.showAnchor) {
+        for (int i = 0; i < a.length; i += 1 ) {
+          dot(getAnchorPos(i));
+          label((string)i,getAnchorPos(i) + (0,0.1) );
+        }
+      }
+
+      if (drawOpt.showOrigin) {
+        label("(0,0)", (0,0) + (0,-0.1) );
+      }
     }
   }
 }
