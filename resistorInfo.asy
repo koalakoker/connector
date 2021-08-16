@@ -9,4 +9,7 @@ import drawOptions;
 include "./components/resistor.asy";
 
 Resistor r = Resistor((0,0), "$R_x$");
-r.draw(DrawOption(showAnchor = true, showOrigin = true));
+r.draw(DrawOption(
+  showAnchor      = true,
+  showAnchorLabel = true,
+  showOrigin      = true));

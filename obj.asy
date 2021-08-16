@@ -36,7 +36,9 @@ struct Obj {
       if (drawOpt.showAnchor) {
         for (int i = 0; i < a.length; i += 1 ) {
           dot(getAnchorPos(i));
-          label((string)i,getAnchorPos(i) + (0,0.1) );
+          if (drawOpt.showAnchorLabel) {
+            label((string)i,getAnchorPos(i) + (0,0.1) );
+          }
         }
       }
 

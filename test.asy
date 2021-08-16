@@ -38,7 +38,9 @@ real dsp = 7.0;
 }
 
 // Draw option
-DrawOption dOpt = DrawOption(showBounds = true);
+DrawOption dOpt = DrawOption(
+  showBounds = true,
+  showAnchor = true);
 
 // Test with different orientation
 void testW_NS() {

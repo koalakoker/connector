@@ -1,0 +1,2 @@
+#!/bin/zsh
+asy -noV -o generated/ test.asy

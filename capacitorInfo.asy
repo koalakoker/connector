@@ -9,4 +9,7 @@ import drawOptions;
 include "./components/capacitor.asy";
 
 Capacitor c = Capacitor((0,0), "$C_x$");
-c.draw(DrawOption(showAnchor = true, showOrigin = true));
+c.draw(DrawOption(
+  showAnchor      = true,
+  showAnchorLabel = true,
+  showOrigin      = true));
