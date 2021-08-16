@@ -26,6 +26,13 @@ struct Obj {
 
   void draw(DrawOption drawOpt) {
     if (drawOpt != null) {
+
+      if (drawOpt.showBounds) {
+        real halfLen = this.len / 2;
+        draw(box(this.pos - (halfLen, halfLen), this.pos + (halfLen, halfLen)));
+        label(this.name, this.pos);
+      }
+
       if (drawOpt.showAnchor) {
         for (int i = 0; i < a.length; i += 1 ) {
           dot(getAnchorPos(i));

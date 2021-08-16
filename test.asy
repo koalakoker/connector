@@ -1,5 +1,6 @@
 import obj;
 import connector;
+import drawOptions;
 
 settings.outformat="pdf";
 settings.prc = false; 
@@ -36,22 +37,25 @@ real dsp = 7.0;
   b = box((-3.5,-3.5),(3.5,3.5));
 }
 
+// Draw option
+DrawOption dOpt = DrawOption(showBounds = true);
+
 // Test with different orientation
 void testW_NS() {
-  for (Obj o: oList) {o.draw();}
-  drawAncorConnector(oList[0], DW-1, oList[1], DN-1);
+  for (Obj o: oList) {o.draw(dOpt);}
+  drawAnchorConnector(oList[0], DW-1, oList[1], DN-1);
   for (Obj o: oList) {o.pos = o.pos + (1,0) * dsp;}
 
-  for (Obj o: oList) {o.draw();}
-  drawAncorConnector(oList[0], DW-1, oList[2], DN-1);
+  for (Obj o: oList) {o.draw(dOpt);}
+  drawAnchorConnector(oList[0], DW-1, oList[2], DN-1);
   for (Obj o: oList) {o.pos = o.pos + (0,1) * dsp;}
 
-  for (Obj o: oList) {o.draw();}
-  drawAncorConnector(oList[0], DW-1, oList[3], DN-1);
+  for (Obj o: oList) {o.draw(dOpt);}
+  drawAnchorConnector(oList[0], DW-1, oList[3], DN-1);
   for (Obj o: oList) {o.pos = o.pos + (-1,0) * dsp;}
 
-  for (Obj o: oList) {o.draw();}
-  drawAncorConnector(oList[0], DW-1, oList[4], DN-1);
+  for (Obj o: oList) {o.draw(dOpt);}
+  drawAnchorConnector(oList[0], DW-1, oList[4], DN-1);
   for (Obj o: oList) {o.pos = o.pos + (0,-1) * dsp;}
   
   draw(b);
@@ -62,20 +66,20 @@ void testW_NS() {
   
   erase();
   
-  for (Obj o: oList) {o.draw();}
-  drawAncorConnector(oList[0], DW-1, oList[1], DS-1);
+  for (Obj o: oList) {o.draw(dOpt);}
+  drawAnchorConnector(oList[0], DW-1, oList[1], DS-1);
   for (Obj o: oList) {o.pos = o.pos + (1,0) * dsp;}
   
-  for (Obj o: oList) {o.draw();}
-  drawAncorConnector(oList[0], DW-1, oList[2], DS-1);
+  for (Obj o: oList) {o.draw(dOpt);}
+  drawAnchorConnector(oList[0], DW-1, oList[2], DS-1);
   for (Obj o: oList) {o.pos = o.pos + (0,1) * dsp;}
 
-  for (Obj o: oList) {o.draw();}
-  drawAncorConnector(oList[0], DW-1, oList[3], DS-1);
+  for (Obj o: oList) {o.draw(dOpt);}
+  drawAnchorConnector(oList[0], DW-1, oList[3], DS-1);
   for (Obj o: oList) {o.pos = o.pos + (-1,0) * dsp;}
 
-  for (Obj o: oList) {o.draw();}
-  drawAncorConnector(oList[0], DW-1, oList[4], DS-1);
+  for (Obj o: oList) {o.draw(dOpt);}
+  drawAnchorConnector(oList[0], DW-1, oList[4], DS-1);
   for (Obj o: oList) {o.pos = o.pos + (0,-1) * dsp;}
   
   draw(b);
@@ -87,20 +91,20 @@ void testW_NS() {
   erase();}
 
 void testE_NS() {
-  for (Obj o: oList) {o.draw();}
-  drawAncorConnector(oList[0], DE-1, oList[1], DN-1);
+  for (Obj o: oList) {o.draw(dOpt);}
+  drawAnchorConnector(oList[0], DE-1, oList[1], DN-1);
   for (Obj o: oList) {o.pos = o.pos + (1,0) * dsp;}
 
-  for (Obj o: oList) {o.draw();}
-  drawAncorConnector(oList[0], DE-1, oList[2], DN-1);
+  for (Obj o: oList) {o.draw(dOpt);}
+  drawAnchorConnector(oList[0], DE-1, oList[2], DN-1);
   for (Obj o: oList) {o.pos = o.pos + (0,1) * dsp;}
 
-  for (Obj o: oList) {o.draw();}
-  drawAncorConnector(oList[0], DE-1, oList[3], DN-1);
+  for (Obj o: oList) {o.draw(dOpt);}
+  drawAnchorConnector(oList[0], DE-1, oList[3], DN-1);
   for (Obj o: oList) {o.pos = o.pos + (-1,0) * dsp;}
 
-  for (Obj o: oList) {o.draw();}
-  drawAncorConnector(oList[0], DE-1, oList[4], DN-1);
+  for (Obj o: oList) {o.draw(dOpt);}
+  drawAnchorConnector(oList[0], DE-1, oList[4], DN-1);
   for (Obj o: oList) {o.pos = o.pos + (0,-1) * dsp;}
   
   draw(b);
@@ -111,20 +115,20 @@ void testE_NS() {
   
   erase();
   
-  for (Obj o: oList) {o.draw();}
-  drawAncorConnector(oList[0], DE-1, oList[1], DS-1);
+  for (Obj o: oList) {o.draw(dOpt);}
+  drawAnchorConnector(oList[0], DE-1, oList[1], DS-1);
   for (Obj o: oList) {o.pos = o.pos + (1,0) * dsp;}
   
-  for (Obj o: oList) {o.draw();}
-  drawAncorConnector(oList[0], DE-1, oList[2], DS-1);
+  for (Obj o: oList) {o.draw(dOpt);}
+  drawAnchorConnector(oList[0], DE-1, oList[2], DS-1);
   for (Obj o: oList) {o.pos = o.pos + (0,1) * dsp;}
 
-  for (Obj o: oList) {o.draw();}
-  drawAncorConnector(oList[0], DE-1, oList[3], DS-1);
+  for (Obj o: oList) {o.draw(dOpt);}
+  drawAnchorConnector(oList[0], DE-1, oList[3], DS-1);
   for (Obj o: oList) {o.pos = o.pos + (-1,0) * dsp;}
 
-  for (Obj o: oList) {o.draw();}
-  drawAncorConnector(oList[0], DE-1, oList[4], DS-1);
+  for (Obj o: oList) {o.draw(dOpt);}
+  drawAnchorConnector(oList[0], DE-1, oList[4], DS-1);
   for (Obj o: oList) {o.pos = o.pos + (0,-1) * dsp;}
   
   draw(b);
@@ -136,20 +140,20 @@ void testE_NS() {
   erase();}
 
 void testN_EW() {
-  for (Obj o: oList) {o.draw();}
-  drawAncorConnector(oList[0], DN-1, oList[1], DE-1);
+  for (Obj o: oList) {o.draw(dOpt);}
+  drawAnchorConnector(oList[0], DN-1, oList[1], DE-1);
   for (Obj o: oList) {o.pos = o.pos + (1,0) * dsp;}
     
-  for (Obj o: oList) {o.draw();}
-  drawAncorConnector(oList[0], DN-1, oList[2], DE-1);
+  for (Obj o: oList) {o.draw(dOpt);}
+  drawAnchorConnector(oList[0], DN-1, oList[2], DE-1);
   for (Obj o: oList) {o.pos = o.pos + (0,1) * dsp;}
 
-  for (Obj o: oList) {o.draw();}
-  drawAncorConnector(oList[0], DN-1, oList[3], DE-1);
+  for (Obj o: oList) {o.draw(dOpt);}
+  drawAnchorConnector(oList[0], DN-1, oList[3], DE-1);
   for (Obj o: oList) {o.pos = o.pos + (-1,0) * dsp;}
 
-  for (Obj o: oList) {o.draw();}
-  drawAncorConnector(oList[0], DN-1, oList[4], DE-1);
+  for (Obj o: oList) {o.draw(dOpt);}
+  drawAnchorConnector(oList[0], DN-1, oList[4], DE-1);
   for (Obj o: oList) {o.pos = o.pos + (0,-1) * dsp;}
   
   draw(b);
@@ -160,20 +164,20 @@ void testN_EW() {
   
   erase();
   
-  for (Obj o: oList) {o.draw();}
-  drawAncorConnector(oList[0], DN-1, oList[1], DW-1);
+  for (Obj o: oList) {o.draw(dOpt);}
+  drawAnchorConnector(oList[0], DN-1, oList[1], DW-1);
   for (Obj o: oList) {o.pos = o.pos + (1,0) * dsp;}
 
-  for (Obj o: oList) {o.draw();}
-  drawAncorConnector(oList[0], DN-1, oList[2], DW-1);
+  for (Obj o: oList) {o.draw(dOpt);}
+  drawAnchorConnector(oList[0], DN-1, oList[2], DW-1);
   for (Obj o: oList) {o.pos = o.pos + (0,1) * dsp;}
 
-  for (Obj o: oList) {o.draw();}
-  drawAncorConnector(oList[0], DN-1, oList[3], DW-1);
+  for (Obj o: oList) {o.draw(dOpt);}
+  drawAnchorConnector(oList[0], DN-1, oList[3], DW-1);
   for (Obj o: oList) {o.pos = o.pos + (-1,0) * dsp;}
 
-  for (Obj o: oList) {o.draw();}
-  drawAncorConnector(oList[0], DN-1, oList[4], DW-1);
+  for (Obj o: oList) {o.draw(dOpt);}
+  drawAnchorConnector(oList[0], DN-1, oList[4], DW-1);
   for (Obj o: oList) {o.pos = o.pos + (0,-1) * dsp;}
   
   draw(b);
@@ -185,20 +189,20 @@ void testN_EW() {
   erase();}
 
 void testS_EW() {
-  for (Obj o: oList) {o.draw();}
-  drawAncorConnector(oList[0], DS-1, oList[1], DE-1);
+  for (Obj o: oList) {o.draw(dOpt);}
+  drawAnchorConnector(oList[0], DS-1, oList[1], DE-1);
   for (Obj o: oList) {o.pos = o.pos + (1,0) * dsp;}
     
-  for (Obj o: oList) {o.draw();}
-  drawAncorConnector(oList[0], DS-1, oList[2], DE-1);
+  for (Obj o: oList) {o.draw(dOpt);}
+  drawAnchorConnector(oList[0], DS-1, oList[2], DE-1);
   for (Obj o: oList) {o.pos = o.pos + (0,1) * dsp;}
 
-  for (Obj o: oList) {o.draw();}
-  drawAncorConnector(oList[0], DS-1, oList[3], DE-1);
+  for (Obj o: oList) {o.draw(dOpt);}
+  drawAnchorConnector(oList[0], DS-1, oList[3], DE-1);
   for (Obj o: oList) {o.pos = o.pos + (-1,0) * dsp;}
 
-  for (Obj o: oList) {o.draw();}
-  drawAncorConnector(oList[0], DS-1, oList[4], DE-1);
+  for (Obj o: oList) {o.draw(dOpt);}
+  drawAnchorConnector(oList[0], DS-1, oList[4], DE-1);
   for (Obj o: oList) {o.pos = o.pos + (0,-1) * dsp;}
   
   draw(b);
@@ -209,20 +213,20 @@ void testS_EW() {
   
   erase();
 
-  for (Obj o: oList) {o.draw();}
-  drawAncorConnector(oList[0], DS-1, oList[1], DW-1);
+  for (Obj o: oList) {o.draw(dOpt);}
+  drawAnchorConnector(oList[0], DS-1, oList[1], DW-1);
   for (Obj o: oList) {o.pos = o.pos + (1,0) * dsp;}
 
-  for (Obj o: oList) {o.draw();}
-  drawAncorConnector(oList[0], DS-1, oList[2], DW-1);
+  for (Obj o: oList) {o.draw(dOpt);}
+  drawAnchorConnector(oList[0], DS-1, oList[2], DW-1);
   for (Obj o: oList) {o.pos = o.pos + (0,1) * dsp;}
 
-  for (Obj o: oList) {o.draw();}
-  drawAncorConnector(oList[0], DS-1, oList[3], DW-1);
+  for (Obj o: oList) {o.draw(dOpt);}
+  drawAnchorConnector(oList[0], DS-1, oList[3], DW-1);
   for (Obj o: oList) {o.pos = o.pos + (-1,0) * dsp;}
 
-  for (Obj o: oList) {o.draw();}
-  drawAncorConnector(oList[0], DS-1, oList[4], DW-1);
+  for (Obj o: oList) {o.draw(dOpt);}
+  drawAnchorConnector(oList[0], DS-1, oList[4], DW-1);
   for (Obj o: oList) {o.pos = o.pos + (0,-1) * dsp;}
   
   draw(b);
@@ -235,20 +239,20 @@ void testS_EW() {
 
 // Test with same direction
 void testW_W() {
-  for (Obj o: oList) {o.draw();}
-  drawAncorConnector(oList[0], DW-1, oList[1], DW-1);
+  for (Obj o: oList) {o.draw(dOpt);}
+  drawAnchorConnector(oList[0], DW-1, oList[1], DW-1);
   for (Obj o: oList) {o.pos = o.pos + (1,0) * dsp;}
 
-  for (Obj o: oList) {o.draw();}
-  drawAncorConnector(oList[0], DW-1, oList[2], DW-1);
+  for (Obj o: oList) {o.draw(dOpt);}
+  drawAnchorConnector(oList[0], DW-1, oList[2], DW-1);
   for (Obj o: oList) {o.pos = o.pos + (0,1) * dsp;}
 
-  for (Obj o: oList) {o.draw();}
-  drawAncorConnector(oList[0], DW-1, oList[3], DW-1);
+  for (Obj o: oList) {o.draw(dOpt);}
+  drawAnchorConnector(oList[0], DW-1, oList[3], DW-1);
   for (Obj o: oList) {o.pos = o.pos + (-1,0) * dsp;}
 
-  for (Obj o: oList) {o.draw();}
-  drawAncorConnector(oList[0], DW-1, oList[4], DW-1);
+  for (Obj o: oList) {o.draw(dOpt);}
+  drawAnchorConnector(oList[0], DW-1, oList[4], DW-1);
   for (Obj o: oList) {o.pos = o.pos + (0,-1) * dsp;}
   
   draw(b);
@@ -259,20 +263,20 @@ void testW_W() {
   
   erase();}
 void testE_E() {
-  for (Obj o: oList) {o.draw();}
-  drawAncorConnector(oList[0], DE-1, oList[1], DE-1);
+  for (Obj o: oList) {o.draw(dOpt);}
+  drawAnchorConnector(oList[0], DE-1, oList[1], DE-1);
   for (Obj o: oList) {o.pos = o.pos + (1,0) * dsp;}
 
-  for (Obj o: oList) {o.draw();}
-  drawAncorConnector(oList[0], DE-1, oList[2], DE-1);
+  for (Obj o: oList) {o.draw(dOpt);}
+  drawAnchorConnector(oList[0], DE-1, oList[2], DE-1);
   for (Obj o: oList) {o.pos = o.pos + (0,1) * dsp;}
 
-  for (Obj o: oList) {o.draw();}
-  drawAncorConnector(oList[0], DE-1, oList[3], DE-1);
+  for (Obj o: oList) {o.draw(dOpt);}
+  drawAnchorConnector(oList[0], DE-1, oList[3], DE-1);
   for (Obj o: oList) {o.pos = o.pos + (-1,0) * dsp;}
 
-  for (Obj o: oList) {o.draw();}
-  drawAncorConnector(oList[0], DE-1, oList[4], DE-1);
+  for (Obj o: oList) {o.draw(dOpt);}
+  drawAnchorConnector(oList[0], DE-1, oList[4], DE-1);
   for (Obj o: oList) {o.pos = o.pos + (0,-1) * dsp;}
   
   draw(b);
@@ -283,20 +287,20 @@ void testE_E() {
   
   erase();}
 void testN_N() {
-  for (Obj o: oList) {o.draw();}
-  drawAncorConnector(oList[0], DN-1, oList[1], DN-1);
+  for (Obj o: oList) {o.draw(dOpt);}
+  drawAnchorConnector(oList[0], DN-1, oList[1], DN-1);
   for (Obj o: oList) {o.pos = o.pos + (1,0) * dsp;}
 
-  for (Obj o: oList) {o.draw();}
-  drawAncorConnector(oList[0], DN-1, oList[2], DN-1);
+  for (Obj o: oList) {o.draw(dOpt);}
+  drawAnchorConnector(oList[0], DN-1, oList[2], DN-1);
   for (Obj o: oList) {o.pos = o.pos + (0,1) * dsp;}
 
-  for (Obj o: oList) {o.draw();}
-  drawAncorConnector(oList[0], DN-1, oList[3], DN-1);
+  for (Obj o: oList) {o.draw(dOpt);}
+  drawAnchorConnector(oList[0], DN-1, oList[3], DN-1);
   for (Obj o: oList) {o.pos = o.pos + (-1,0) * dsp;}
 
-  for (Obj o: oList) {o.draw();}
-  drawAncorConnector(oList[0], DN-1, oList[4], DN-1);
+  for (Obj o: oList) {o.draw(dOpt);}
+  drawAnchorConnector(oList[0], DN-1, oList[4], DN-1);
   for (Obj o: oList) {o.pos = o.pos + (0,-1) * dsp;}
   
   draw(b);
@@ -307,20 +311,20 @@ void testN_N() {
   
   erase();}
 void testS_S() {
-  for (Obj o: oList) {o.draw();}
-  drawAncorConnector(oList[0], DS-1, oList[1], DS-1);
+  for (Obj o: oList) {o.draw(dOpt);}
+  drawAnchorConnector(oList[0], DS-1, oList[1], DS-1);
   for (Obj o: oList) {o.pos = o.pos + (1,0) * dsp;}
 
-  for (Obj o: oList) {o.draw();}
-  drawAncorConnector(oList[0], DS-1, oList[2], DS-1);
+  for (Obj o: oList) {o.draw(dOpt);}
+  drawAnchorConnector(oList[0], DS-1, oList[2], DS-1);
   for (Obj o: oList) {o.pos = o.pos + (0,1) * dsp;}
 
-  for (Obj o: oList) {o.draw();}
-  drawAncorConnector(oList[0], DS-1, oList[3], DS-1);
+  for (Obj o: oList) {o.draw(dOpt);}
+  drawAnchorConnector(oList[0], DS-1, oList[3], DS-1);
   for (Obj o: oList) {o.pos = o.pos + (-1,0) * dsp;}
 
-  for (Obj o: oList) {o.draw();}
-  drawAncorConnector(oList[0], DS-1, oList[4], DS-1);
+  for (Obj o: oList) {o.draw(dOpt);}
+  drawAnchorConnector(oList[0], DS-1, oList[4], DS-1);
   for (Obj o: oList) {o.pos = o.pos + (0,-1) * dsp;}
   
   draw(b);
@@ -333,20 +337,20 @@ void testS_S() {
 
 // Test with oposite direction
 void testW_E() {
-  for (Obj o: oList) {o.draw();}
-  drawAncorConnector(oList[0], DW-1, oList[1], DE-1, .5, .5, 1);
+  for (Obj o: oList) {o.draw(dOpt);}
+  drawAnchorConnector(oList[0], DW-1, oList[1], DE-1, .5, .5, 1);
   for (Obj o: oList) {o.pos = o.pos + (1,0) * dsp;}
 
-  for (Obj o: oList) {o.draw();}
-  drawAncorConnector(oList[0], DW-1, oList[2], DE-1, .5, .5, 1);
+  for (Obj o: oList) {o.draw(dOpt);}
+  drawAnchorConnector(oList[0], DW-1, oList[2], DE-1, .5, .5, 1);
   for (Obj o: oList) {o.pos = o.pos + (0,1) * dsp;}
 
-  for (Obj o: oList) {o.draw();}
-  drawAncorConnector(oList[0], DW-1, oList[3], DE-1);
+  for (Obj o: oList) {o.draw(dOpt);}
+  drawAnchorConnector(oList[0], DW-1, oList[3], DE-1);
   for (Obj o: oList) {o.pos = o.pos + (-1,0) * dsp;}
 
-  for (Obj o: oList) {o.draw();}
-  drawAncorConnector(oList[0], DW-1, oList[4], DE-1);
+  for (Obj o: oList) {o.draw(dOpt);}
+  drawAnchorConnector(oList[0], DW-1, oList[4], DE-1);
   for (Obj o: oList) {o.pos = o.pos + (0,-1) * dsp;}
   
   draw(b);
@@ -358,20 +362,20 @@ void testW_E() {
   erase();}
 
 void testE_W() {
-  for (Obj o: oList) {o.draw();}
-  drawAncorConnector(oList[0], DE-1, oList[1], DW-1);
+  for (Obj o: oList) {o.draw(dOpt);}
+  drawAnchorConnector(oList[0], DE-1, oList[1], DW-1);
   for (Obj o: oList) {o.pos = o.pos + (1,0) * dsp;}
 
-  for (Obj o: oList) {o.draw();}
-  drawAncorConnector(oList[0], DE-1, oList[2], DW-1);
+  for (Obj o: oList) {o.draw(dOpt);}
+  drawAnchorConnector(oList[0], DE-1, oList[2], DW-1);
   for (Obj o: oList) {o.pos = o.pos + (0,1) * dsp;}
 
-  for (Obj o: oList) {o.draw();}
-  drawAncorConnector(oList[0], DE-1, oList[3], DW-1, .5, .5, 1);
+  for (Obj o: oList) {o.draw(dOpt);}
+  drawAnchorConnector(oList[0], DE-1, oList[3], DW-1, .5, .5, 1);
   for (Obj o: oList) {o.pos = o.pos + (-1,0) * dsp;}
 
-  for (Obj o: oList) {o.draw();}
-  drawAncorConnector(oList[0], DE-1, oList[4], DW-1, .5, .5, 1);
+  for (Obj o: oList) {o.draw(dOpt);}
+  drawAnchorConnector(oList[0], DE-1, oList[4], DW-1, .5, .5, 1);
   for (Obj o: oList) {o.pos = o.pos + (0,-1) * dsp;}
   
   draw(b);
@@ -383,20 +387,20 @@ void testE_W() {
   erase();}
 
 void testN_S() {
-  for (Obj o: oList) {o.draw();}
-  drawAncorConnector(oList[0], DN-1, oList[1], DS-1);
+  for (Obj o: oList) {o.draw(dOpt);}
+  drawAnchorConnector(oList[0], DN-1, oList[1], DS-1);
   for (Obj o: oList) {o.pos = o.pos + (1,0) * dsp;}
 
-  for (Obj o: oList) {o.draw();}
-  drawAncorConnector(oList[0], DN-1, oList[2], DS-1, .5, .5, 1);
+  for (Obj o: oList) {o.draw(dOpt);}
+  drawAnchorConnector(oList[0], DN-1, oList[2], DS-1, .5, .5, 1);
   for (Obj o: oList) {o.pos = o.pos + (0,1) * dsp;}
 
-  for (Obj o: oList) {o.draw();}
-  drawAncorConnector(oList[0], DN-1, oList[3], DS-1, .5, .5, 1);
+  for (Obj o: oList) {o.draw(dOpt);}
+  drawAnchorConnector(oList[0], DN-1, oList[3], DS-1, .5, .5, 1);
   for (Obj o: oList) {o.pos = o.pos + (-1,0) * dsp;}
 
-  for (Obj o: oList) {o.draw();}
-  drawAncorConnector(oList[0], DN-1, oList[4], DS-1);
+  for (Obj o: oList) {o.draw(dOpt);}
+  drawAnchorConnector(oList[0], DN-1, oList[4], DS-1);
   for (Obj o: oList) {o.pos = o.pos + (0,-1) * dsp;}
   
   draw(b);
@@ -408,20 +412,20 @@ void testN_S() {
   erase();}
 
 void testS_N() {
-  for (Obj o: oList) {o.draw();}
-  drawAncorConnector(oList[0], DS-1, oList[1], DN-1, 0.5, 0.5, 1);
+  for (Obj o: oList) {o.draw(dOpt);}
+  drawAnchorConnector(oList[0], DS-1, oList[1], DN-1, 0.5, 0.5, 1);
   for (Obj o: oList) {o.pos = o.pos + (1,0) * dsp;}
 
-  for (Obj o: oList) {o.draw();}
-  drawAncorConnector(oList[0], DS-1, oList[2], DN-1);
+  for (Obj o: oList) {o.draw(dOpt);}
+  drawAnchorConnector(oList[0], DS-1, oList[2], DN-1);
   for (Obj o: oList) {o.pos = o.pos + (0,1) * dsp;}
 
-  for (Obj o: oList) {o.draw();}
-  drawAncorConnector(oList[0], DS-1, oList[3], DN-1);
+  for (Obj o: oList) {o.draw(dOpt);}
+  drawAnchorConnector(oList[0], DS-1, oList[3], DN-1);
   for (Obj o: oList) {o.pos = o.pos + (-1,0) * dsp;}
 
-  for (Obj o: oList) {o.draw();}
-  drawAncorConnector(oList[0], DS-1, oList[4], DN-1, 0.5, 0.5, 1);
+  for (Obj o: oList) {o.draw(dOpt);}
+  drawAnchorConnector(oList[0], DS-1, oList[4], DN-1, 0.5, 0.5, 1);
   for (Obj o: oList) {o.pos = o.pos + (0,-1) * dsp;}
   
   draw(b);
