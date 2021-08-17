@@ -6,7 +6,7 @@ size(4cm);
 import obj;
 import connector;
 import drawOptions;
-include "./components/capacitor.asy";
+import capacitor;
 
 Capacitor c = Capacitor((0,0), "$C_x$");
 c.draw(DrawOption(
