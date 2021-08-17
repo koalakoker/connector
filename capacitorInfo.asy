@@ -1,12 +1,9 @@
-settings.outformat="pdf";
-settings.render = 16;
-settings.prc = false; 
-size(4cm);
-
 import obj;
 import connector;
 import drawOptions;
 import capacitor;
+
+size(4cm);
 
 Capacitor c = Capacitor((0,0), "$C_x$");
 c.draw(DrawOption(
