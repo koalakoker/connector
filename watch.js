@@ -19,7 +19,7 @@ console.log(`Watching for file changes`);
 function fileChanged(curr, prev) {
   console.log(`Source modified`);
 
-  execFile('./generate', [fileName], (err, stdout, stderr) => {
+  execFile('asy', ['-noV','-o','generated/',fileName], (err, stdout, stderr) => {
     if (err) {
       console.log(err);
     } else {
