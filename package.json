@@ -11,10 +11,14 @@
     "url": "git+https://github.com/koalakoker/connector.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Koalakoker",
   "license": "ISC",
+  "type": "module",
   "bugs": {
     "url": "https://github.com/koalakoker/connector/issues"
   },
-  "homepage": "https://github.com/koalakoker/connector#readme"
+  "homepage": "https://github.com/koalakoker/connector#readme",
+  "dependencies": {
+    "@root/walk": "^1.1.0"
+  }
 }

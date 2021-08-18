@@ -1,29 +1,39 @@
-const path = require('path');
-const fs = require('fs');
-const { execFile } = require('child_process');
+import { getFileList, getGeneratedFileList } from "./scanDir.js";
+import fs from "fs";
+import { execFile } from 'child_process';
 
-const watchedFile = ['./resistorInfo.asy','./obj.asy'];
-const onlyName = [];
-watchedFile.forEach(file => {
-  onlyName.push(path.parse(file).name);
-});
+// Watched file will be all .asy files present in current folder and subfolders
+const watchedFile = await getFileList();
+// Generated files will be all .asy file (name without extension) present in current folder except config.asy
+const onlyName = await getGeneratedFileList();
+// watchedFile.forEach(file => {
+//   onlyName.push(path.parse(file).name);
+// });
 
-console.log(`Watching for file changes on ${watchedFile}`);
+console.log(`Watching for file changes`);
 
 function fileChanged(curr, prev) {
-  console.log(`${watchedFile} file Changed`);
+  console.log(`file Changed`);
 
-  execFile('./generate', [onlyName[0]], (err, stdout, stderr) => {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log('Output generated correctly');
-    }
+  onlyName.forEach(file => {
+    console.log(file);
+    execFile('./generate', [file], (err, stdout, stderr) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log(file + ' generated correctly');
+      }
+    });
+    
   });
+
 
 }
 
-fs.watchFile(watchedFile[0], { interval: 1000 }, fileChanged );
-fs.watchFile(watchedFile[1], { interval: 1000 }, fileChanged );
+watchedFile.forEach(file => {
+  fs.watchFile(file, { interval: 1000 }, fileChanged);
+});
+
+
 
 
