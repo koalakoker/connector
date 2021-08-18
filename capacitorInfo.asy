@@ -1,6 +1,6 @@
-import obj;
 import connector;
 import drawOptions;
+import obj;
 import capacitor;
 
 size(4cm);
