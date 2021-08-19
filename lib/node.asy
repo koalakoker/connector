@@ -22,11 +22,11 @@ struct Node {
   }
 
   void draw(pen p = currentpen, DrawOption drawOpt = null) {
-    obj.draw(drawOpt);
     if (this.obj.name != "") {
       label(this.obj.name, this.obj.pos, align = this.obj.align);
     }
     dot(obj.pos, p);
+    obj.draw(drawOpt);
   }
 }
 

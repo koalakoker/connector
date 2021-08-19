@@ -5,9 +5,10 @@ size(10cm);
 import obj;
 import components;
 import connector;
+import drawOptions;
 
 Relay R1 = Relay((0,0), 180, "$R_1$");
-R1.draw(showAnchor = true);
+R1.draw(DrawOption(showAnchor = true, showAnchorLabel = true));
 
 Node a = Node((-2,-2));
 a.draw(red);
