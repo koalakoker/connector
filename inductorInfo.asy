@@ -3,7 +3,7 @@ import drawOptions;
 import obj;
 import inductor;
 
-size(4cm);
+include 'common.asy';
 
 Inductor l = Inductor((0,0), "$L_x$");
 l.draw(DrawOption(

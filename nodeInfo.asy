@@ -1,12 +1,12 @@
 import connector;
 import drawOptions;
 import obj;
-import capacitor;
+import node;
 
 include 'common.asy';
 
-Capacitor c = Capacitor((0,0), "$C_x$");
-c.draw(DrawOption(
+Node n = Node((0,0), "$V_x$", align = NE);
+n.draw(DrawOption(
   showAnchor      = true,
   showAnchorLabel = true,
   showOrigin      = true));

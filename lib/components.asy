@@ -1,6 +1,12 @@
 import obj;
 import drawOptions;
 
+import node;
+import fuse;
+import inductor;
+import capacitor;
+
+
 pen smallDot = currentpen + 5;
 
 // Draw
@@ -93,32 +99,7 @@ void drawGndS(pair origin, real orient = 0, pen p = currentpen) {
   draw(shift(origin) * rotate(orient) * ((0,0) -- (0,-.2) ^^ (-.2, -.2) -- (.2, -.2) -- (0, -.41) -- (-.2,-.2)), p = p);}
 
 // Struct
-struct Node {
-  Obj obj;
-  
-  void operator init(pair pos, string name = "", align align = NoAlign) {
-    
-    obj.operator init(pos, 0, name, align);
-    
-    Anchor[] aL;
-    Anchor a;
-    a = Anchor((0, 0), DN);
-    aL.push(a);
-    a = Anchor((0, 0), DS);
-    aL.push(a);
-    a = Anchor((0, 0), DE);
-    aL.push(a);
-    a = Anchor((0, 0), DW);
-    aL.push(a);
-    this.obj.a = aL;
-  }
 
-  void draw(pen p = currentpen) {
-    if (this.obj.name != "") {
-      label(this.obj.name, this.obj.pos, align = this.obj.align);
-    }
-    dot(obj.pos, p);
-  }}
 
 
 
@@ -374,7 +355,6 @@ struct GndSignal {
     }
   }}
 // Cast
-Obj operator cast(Node node) {return node.obj;}
 Obj operator cast(Relay relay) {return relay.obj;}
 Obj operator cast(RelaySPDT relay) {return relay.obj;}
 Obj operator cast(Igbt igbt) {return igbt.obj;}

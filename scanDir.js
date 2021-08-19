@@ -25,7 +25,7 @@ export async function getFileList() {
   return(filesList);
 }
 
-export function getGeneratedFileList() {
+export function getAllFileList() {
   return new Promise((resolve,reject) => {
     fs.readdir(root, (err, files) => {
       files.forEach(file => {

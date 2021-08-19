@@ -1,17 +1,22 @@
-import { getFileList, getGeneratedFileList } from "./scanDir.js";
+import { getFileList, getAllFileList } from "./scanDir.js";
 import fs from "fs";
 import { execFile } from 'child_process';
 
 process.argv.splice(0,2);
 const args = process.argv;
 if (args.length != 1) {
-  console.log("\nUsage node watch.js file\n");
+  console.log("\nUsage:\nnode watch.js file.asy, or\nnode watch.js -all\n");
   process.exit(0);
 }
 
 // Watched file will be all .asy files present in current folder and subfolders
 const watchedFile = await getFileList();
-const fileName = args[0];
+let fileName = [];
+if (args[0] == '-all') {
+  fileName = await getAllFileList();
+} else {
+  fileName.push(args[0]);
+}
 
 generation();
 
@@ -20,15 +25,17 @@ console.log(`Watching for file changes`);
 function generation() {
   console.log('Output generation');
   
-  execFile('asy', ['-noV', '-o', 'generated/', fileName], (err, stdout, stderr) => {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log(fileName + ' generated correctly');
-    }
+  fileName.forEach(element => {
+    execFile('asy', ['-noV', '-o', 'generated/', element], (err, stdout, stderr) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log(element + ' generated correctly');
+      }
+    });
   });
-}
 
+}
 
 function fileChanged(curr, prev) {
   console.log(`Source modified`);
@@ -38,7 +45,3 @@ function fileChanged(curr, prev) {
 watchedFile.forEach(file => {
   fs.watchFile(file, { interval: 1000 }, fileChanged);
 });
-
-
-
-

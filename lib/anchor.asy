@@ -15,6 +15,16 @@ int DW = 4;
 int DH = 10;
 int DV = 11;
 
+real anchorLength = 0.2;
+pair[] EndPointDelta = {(0,0), 
+                        (0, anchorLength),  // DN
+                        (0,-anchorLength),  // DS
+                        (anchorLength, 0),  // DE
+                        (-anchorLength,0)}; // DW
+
+align[] LabelAlign = { NoAlign, NE, SE, NE, NW };
+
+
 int getOrientation(int dir) {
   int retVal = 0;
   if ((dir == DN) || (dir == DS)) {

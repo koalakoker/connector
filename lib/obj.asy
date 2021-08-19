@@ -24,6 +24,17 @@ struct Obj {
     return this.pos + this.a[i].pos;
   }
 
+  void drawAnchorPos(int i, DrawOption drawOpt) {
+    int dir = this.a[i].dir;
+    pair anchorPosBegin = getAnchorPos(i);
+    pair anchorPosEnd   = anchorPosBegin + EndPointDelta[dir];
+    dot(anchorPosBegin);
+    draw(anchorPosBegin--anchorPosEnd);
+    if (drawOpt.showAnchorLabel) {
+      label((string)i, anchorPosEnd, LabelAlign[dir]);
+    }
+  }
+
   void draw(DrawOption drawOpt) {
     if (drawOpt != null) {
 
@@ -35,15 +46,15 @@ struct Obj {
 
       if (drawOpt.showAnchor) {
         for (int i = 0; i < a.length; i += 1 ) {
-          dot(getAnchorPos(i));
-          if (drawOpt.showAnchorLabel) {
-            label((string)i,getAnchorPos(i) + (0,0.1) );
-          }
+          drawAnchorPos(i, drawOpt);
         }
       }
 
       if (drawOpt.showOrigin) {
-        label("(0,0)", (0,0) + (0,-0.1) );
+        label("(0,0)", (0,0) + (-0.0,-0.2) );
+        real crossLenght = 0.04;
+        draw((crossLenght,crossLenght)--(-crossLenght,-crossLenght), p = red);
+        draw((crossLenght,-crossLenght)--(-crossLenght,crossLenght), p = red);
       }
     }
   }
