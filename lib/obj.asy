@@ -51,7 +51,7 @@ struct Obj {
       }
 
       if (drawOpt.showOrigin) {
-        label("(0,0)", (0,0) + (-0.0,-0.2) );
+        label("(0,0)", align = drawOpt.originAlign );
         real crossLenght = 0.04;
         draw((crossLenght,crossLenght)--(-crossLenght,-crossLenght), p = red);
         draw((crossLenght,-crossLenght)--(-crossLenght,crossLenght), p = red);

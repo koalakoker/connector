@@ -9,4 +9,5 @@ GndPower p = GndPower((0,0), "$Gnd$");
 p.draw(DrawOption(
   showAnchor      = true,
   showAnchorLabel = true,
-  showOrigin      = true));
+  showOrigin      = true,
+  originAlign     = W));
