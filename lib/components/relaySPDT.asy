@@ -53,7 +53,7 @@ struct RelaySPDT {
     this.obj.a = aL;
   }
 
-  void draw(pen p = currentpen, DrawOption drawOpt) {
+  void draw(pen p = currentpen, DrawOption drawOpt = null) {
     drawRelaySPDT(this.obj.pos, this.orient, p = currentpen);
     
     label(this.obj.name, this.obj.pos + rotate(this.orient) * (0.7,0.8));

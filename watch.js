@@ -30,7 +30,7 @@ function generation() {
       if (err) {
         console.log(err);
       } else {
-        console.log(element + ' generated correctly');
+        console.log(element + ' processed correctly');
       }
     });
   });

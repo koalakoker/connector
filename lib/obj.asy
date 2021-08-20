@@ -35,7 +35,7 @@ struct Obj {
     }
   }
 
-  void draw(DrawOption drawOpt) {
+  void draw(DrawOption drawOpt = null) {
     if (drawOpt != null) {
 
       if (drawOpt.showBounds) {
