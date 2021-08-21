@@ -1,8 +1,9 @@
-\documentclass[a4paper,12pt]{article}
+\documentclass[a4paper,12pt]{report}
 
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-\usepackage[italian]{babel}
+\usepackage[english]{babel}
+
 \usepackage{eucal,enumitem}
 \usepackage{graphicx}
 \usepackage{amsmath,amssymb,amsthm}
@@ -13,8 +14,20 @@
 \usepackage{fancyhdr}
 \usepackage{caption}
 
+\title{Connector - Reference manual }
+\author{Gianluigi Forte}
+
 \begin{document}
-Here a list of components to be used. 
+\maketitle
+
+\paragraph{Introduction}
+
+Connector is a library written in Asymptote language to generate figures of electronic schematics. Latex and Asymptote, differently from other programs like Word or Write, are languages designed to produce documents with the best quality outputs for prints or presentations starting from a description, of the content to be produced, expressed programmatically in a source code text file and then produced in output after the compilation process. The idea behind the connector library is to provide a ready to use set of functions written in Asymptote language to draw electrical components, link them with connection (wires), decorate with labels and produce the output figure as pdf or png files to be embedded in a larger Latex document or any kind of other usage like websites, videos, presnetations and so on. 
+
+
+\paragraph{Electronic Symbols}
+
+Here a list of components to be used. In each figured is shown the component, the anchor points with index number and the origin position $(0,0)$ indicated with a red cross.
 
 \begin{figure}[h]
 \centering
