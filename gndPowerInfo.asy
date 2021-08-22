@@ -4,6 +4,7 @@ import obj;
 import gndPower;
 
 include 'common.asy';
+size(2cm);
 
 GndPower p = GndPower((0,0), "$Gnd$");
 p.draw(DrawOption(
