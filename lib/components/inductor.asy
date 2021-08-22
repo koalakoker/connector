@@ -57,10 +57,10 @@ struct Inductor {
       label(this.obj.name, this.obj.pos + (0.5,0.2));
     }
     if (this.orient == 90) {
-      label(this.obj.name, this.obj.pos + (0.2,0.5));
+      label(this.obj.name, this.obj.pos + (0.3,0.5));
     }
     if (this.orient == -90) {
-      label(this.obj.name, this.obj.pos + (0.2,-0.5));
+      label(this.obj.name, this.obj.pos + (0.3,-0.5));
     }
   }
 }
