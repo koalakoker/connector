@@ -7,6 +7,7 @@
 \usepackage[hidelinks]{hyperref}
 \usepackage{graphicx}
 \usepackage{caption}
+\usepackage{subcaption}
 
 \title{Connector - Reference manual }
 \author{Gianluigi Forte}
@@ -219,6 +220,83 @@ of the second object.
 \texttt{drawAnchorConnector(obj1, Anchor1, obj2, Anchor2)}
 
 There are also other three optional parameters that can be used to set the aspect of the connection ($r_1,r_2,r_3$).
+As shown in Figure \ref{r1_connectorExample}, the $r_1$ parameter can be used to define the distance of the two corners
+of the connector line (and so the distance of the vertical line in Figure \ref{connectorExample}). The parameter $r_1$ define the distance of the first corner of the connector line from the first object expressed
+in percentage of the distance of the two objects.
 
+\begin{figure}
+  \centering
+  \begin{subfigure}{.33\textwidth}
+    \centering
+    \includegraphics[width=0.9\linewidth]{connectorExample_r1_0_2.pdf}
+    \caption{$r_1=0.2$}
+    \label{fig:sfig1}
+  \end{subfigure}\hfill
+  \begin{subfigure}{.33\textwidth}
+    \centering
+    \includegraphics[width=0.9\linewidth]{connectorExample_r1_0_5.pdf}
+    \caption{$r_1=0.5$}
+    \label{fig:sfig2}
+  \end{subfigure}\hfill
+  \begin{subfigure}{.33\textwidth}
+    \centering
+    \includegraphics[width=0.9\linewidth]{connectorExample_r1_0_8.pdf}
+    \caption{$r_1=0.8$}
+    \label{fig:sfig3}
+  \end{subfigure}
+
+  \caption{Effect of $r_1$ parameter value on connector}
+  \label{r1_connectorExample}
+\end{figure}
+
+The Figure \ref{r2_connectorExample} shows the $r_2$ parameters. It affects the distance between the second object and the
+first corner of the connector line.
+
+\begin{figure}
+  \centering
+  \begin{subfigure}{.33\textwidth}
+    \centering
+    \includegraphics[width=0.9\linewidth]{connectorExample_r2_0_2.pdf}
+    \caption{$r_2=0.2$}
+  \end{subfigure}\hfill
+  \begin{subfigure}{.33\textwidth}
+    \centering
+    \includegraphics[width=0.9\linewidth]{connectorExample_r2_0_5.pdf}
+    \caption{$r_2=0.5$}
+  \end{subfigure}\hfill
+  \begin{subfigure}{.33\textwidth}
+    \centering
+    \includegraphics[width=0.9\linewidth]{connectorExample_r2_0_8.pdf}
+    \caption{$r_2=0.8$}
+  \end{subfigure}
+
+  \caption{Effect of $r_2$ parameter value on connector}
+  \label{r2_connectorExample}
+\end{figure}
+
+The Figure \ref{r3_connectorExample} shows the $r_3$ parameters. It affects the distance between the first corner and the
+second corner (or equivalently the distance of the vertical bar) of the connector line.
+
+\begin{figure}
+  \centering
+  \begin{subfigure}{.33\textwidth}
+    \centering
+    \includegraphics[width=0.9\linewidth]{connectorExample_r3_0_8.pdf}
+    \caption{$r_3=0.8$}
+  \end{subfigure}\hfill
+  \begin{subfigure}{.33\textwidth}
+    \centering
+    \includegraphics[width=0.9\linewidth]{connectorExample_r3_1_3.pdf}
+    \caption{$r_3=1.3$}
+  \end{subfigure}\hfill
+  \begin{subfigure}{.33\textwidth}
+    \centering
+    \includegraphics[width=0.9\linewidth]{connectorExample_r3_1_8.pdf}
+    \caption{$r_3=1.8$}
+  \end{subfigure}
+
+  \caption{Effect of $r_2$ parameter value on connector}
+  \label{r3_connectorExample}
+\end{figure}
 
 \end{document}
