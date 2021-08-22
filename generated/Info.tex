@@ -51,12 +51,27 @@ firstnumber=5
 
 \section*{Introduction}
 
-Connector is a library written in \emph{Asymptote} language to generate figures of electronic schematics. \LaTeX and \emph{Asymptote}, differently from other programs like Word or Write, are languages designed to produce documents with the best quality outputs for prints or presentations starting from a description, of the content to be produced, expressed programmatically in a source code text file and then produced in output after the compilation process. The idea behind the \emph{connector} library is to provide a ready to use set of functions written in Asymptote language to draw electrical components, link them with connection (wires), decorate with labels and produce the output figure as pdf or png files to be embedded in a larger Latex document or any kind of other usage like websites, videos, presentations and so on. 
+Connector is a library written in \emph{Asymptote} language to generate figures of electronic schematics.
+\LaTeX and \emph{Asymptote}, differently from other programs like Word or Write, are languages designed
+to produce documents with the best quality outputs for prints or presentations starting from a description,
+of the content to be produced, expressed programmatically in a source code text file and then produced in
+output after the compilation process. The idea behind the \emph{connector} library is to provide a ready
+to use set of functions written in Asymptote language to draw electrical components, link them with connection
+(wires), decorate with labels and produce the output figure as pdf or png files to be embedded in a larger
+Latex document or any kind of other usage like websites, videos, presentations and so on. 
+An example of the image generated with \emph{connector} is shown in figure \ref{threePhaseInverterExample}.
+The source code \texttt{ThreePhaseInverter.asy} to produce the figure is included in the library.
 
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=1.0\textwidth]{ThreePhaseInverter.pdf}
+  \caption{Example of schematics generated with \emph{connector}}
+  \label{threePhaseInverterExample}
+\end{figure}
 
 \section*{Electronic Symbols}
 
-Here a list of components to be used.
+The following list of components have been included in the libary and can be used out-of-the-box.
 \begin{itemize}
 \item node
 \item resistor
@@ -74,107 +89,136 @@ Here a list of components to be used.
 
 In the folowing figures are shown the components, the anchor points with index number, and the origin position $(0,0)$ indicated with a red cross.
 
-In figure \ref{nodeInfo} is shown a generic node.
+In figure \ref{nodeInfo} is shown a generic node symbol. See \texttt{nodeInfo.asy} code to reproduce the figure.
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width=0.2\textwidth]{nodeInfo}
 \caption{Example of use of a generic node}
-\label{nodeInfo} %Inserire sempre dopo caption
+\label{nodeInfo}
 \end{figure}
 
-To draw the component is possible to use the code:
+In figure \ref{resistorInfo} is shown a resistor symbol. See \texttt{resistorInfo.asy} code to reproduce the figure.
 
-\begin{lstlisting}
-import connector;
-import drawOptions;
-import obj;
-import resistor;
-
-include 'common.asy';
-
-Resistor r = Resistor((0,0), "$R_x$");
-r.draw(DrawOption(
-  showAnchor      = true,
-  showAnchorLabel = true,
-  showOrigin      = true));
-\end{lstlisting}
-
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width=0.5\textwidth]{resistorInfo}
 \caption{Example of use of resistor}
-\label{resistorInfo} %Inserire sempre dopo caption
+\label{resistorInfo}
 \end{figure}
 
-\begin{figure}[h]
+In figure \ref{capaciorInfo} is shown a capacitor symbol. See \texttt{capaciorInfo.asy} code to reproduce the figure.
+
+\begin{figure}[ht]
 \centering
 \includegraphics[width=0.5\textwidth]{capacitorInfo}
 \caption{Example of use of capacitor}
-\label{capaciorInfo} %Inserire sempre dopo caption
+\label{capaciorInfo}
 \end{figure}
 
-\begin{figure}[h]
+In figure \ref{inductorInfo} is shown an inductor symbol. See \texttt{inductorInfo.asy} code to reproduce the figure.
+
+\begin{figure}[ht]
 \centering
 \includegraphics[width=0.5\textwidth]{inductorInfo}
 \caption{Example of use of inductor}
-\label{inductorInfo} %Inserire sempre dopo caption
+\label{inductorInfo}
 \end{figure}
 
-\begin{figure}[h]
+In figure \ref{fuseInfo} is shown a fuse symbol. See \texttt{fuseInfo.asy} code to reproduce the figure.
+
+\begin{figure}[ht]
 \centering
 \includegraphics[width=0.5\textwidth]{fuseInfo}
 \caption{Example of use of fuse}
-\label{fuseInfo} %Inserire sempre dopo caption
+\label{fuseInfo}
 \end{figure}
 
-\begin{figure}[h]
+In figure \ref{diodeInfo} is shown a diode symbol. See \texttt{diodeInfo.asy} code to reproduce the figure.
+
+\begin{figure}[ht]
 \centering
 \includegraphics[width=0.5\textwidth]{diodeInfo}
 \caption{Example of use of diode}
-\label{diodeInfo} %Inserire sempre dopo caption
+\label{diodeInfo}
 \end{figure}
 
-\begin{figure}[h]
+In figure \ref{relayInfo} is shown a relay symbol. See \texttt{relayInfo.asy} code to reproduce the figure.
+
+\begin{figure}[ht]
 \centering
 \includegraphics[width=0.45\textwidth]{relayInfo}
 \caption{Example of use of relay}
-\label{relayInfo} %Inserire sempre dopo caption
+\label{relayInfo}
 \end{figure}
 
-\begin{figure}[h]
+In figure \ref{relaySPDTInfo} is shown a relay SPDT symbol. See \texttt{relaySPDTInfo.asy} code to reproduce the figure.
+
+\begin{figure}[ht]
 \centering
 \includegraphics[width=0.45\textwidth]{relaySPDTInfo}
 \caption{Example of use of relay SPDT}
-\label{relaySPDTInfo} %Inserire sempre dopo caption
+\label{relaySPDTInfo}
 \end{figure}
 
-\begin{figure}[h]
+In figure \ref{igbtInfo} is shown an IGBT symbol. See \texttt{igbtInfo.asy} code to reproduce the figure.
+
+\begin{figure}[ht]
 \centering
 \includegraphics[width=0.3\textwidth]{igbtInfo}
 \caption{Example of use of igbt}
-\label{igbtrInfo} %Inserire sempre dopo caption
+\label{igbtInfo}
 \end{figure}
 
-\begin{figure}[h]
+In figure \ref{mosInfo} is shown a MOS transistor symbol. See \texttt{mosInfo.asy} code to reproduce the figure.
+
+\begin{figure}[ht]
 \centering
 \includegraphics[width=0.3\textwidth]{mosInfo}
 \caption{Example of use of MOS}
-\label{mosInfo} %Inserire sempre dopo caption
+\label{mosInfo}
 \end{figure}
 
-\begin{figure}[h]
+In figure \ref{gndPowerInfo} is shown a power ground symbol. See \texttt{gndPowerInfo.asy} code to reproduce the figure.
+
+\begin{figure}[ht]
 \centering
 \includegraphics[width=0.2\textwidth]{gndPowerInfo}
 \caption{Example of use of power ground symbol}
-\label{gndPowerInfo} %Inserire sempre dopo caption
+\label{gndPowerInfo}
 \end{figure}
 
-\begin{figure}[h]
+In figure \ref{gndSignalInfo} is shown a signal ground symbol. See \texttt{gndSignalInfo.asy} code to reproduce the figure.
+
+\begin{figure}[ht]
 \centering
 \includegraphics[width=0.2\textwidth]{gndSignalInfo}
 \caption{Example of use of signal ground symbol}
-\label{gndSignalInfo} %Inserire sempre dopo caption
+\label{gndSignalInfo}
 \end{figure}
+
+\section*{Connectors}
+
+It is possible to draw connectors (wires) between symbols with the function \texttt{drawAnchorConnector}. In particular the
+connection is done starting from one anchor point to another ancor point that are defined in the sybmol (see from figure \ref{nodeInfo} to figure \ref{gndSignalInfo}).
+The path of the connector is automatically computed by the library in the best way and is drown according the direction
+of the ancor point. The figure \ref{connectorExample} show an example of connections
+between generic objects.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=1.0\textwidth]{N-S}
+  \caption{Example of use of connectors between objects}
+  \label{connectorExample}
+\end{figure}
+
+The \texttt{drawAnchorConnector} function takes as parameters respectively: the first object to be connected,
+the anchor point index of the first object, the second object to be connected and the index of the anchor point
+of the second object.
+
+\texttt{drawAnchorConnector(obj1, Anchor1, obj2, Anchor2)}
+
+There are also other three optional parameters that can be used to set the aspect of the connection ($r_1,r_2,r_3$).
+
 
 \end{document}
