@@ -28,11 +28,18 @@ struct Obj {
     int dir = this.a[i].dir;
     pair anchorPosBegin = getAnchorPos(i);
     pair anchorPosEnd   = anchorPosBegin + EndPointDelta[dir];
+    draw(anchorPosBegin--anchorPosEnd, p = green);
     dot(anchorPosBegin);
-    draw(anchorPosBegin--anchorPosEnd);
     if (drawOpt.showAnchorLabel) {
       label((string)i, anchorPosEnd, LabelAlign[dir]);
     }
+  }
+
+  void drawPointAndLabel(pair pos, string label, align align) {
+    label(pos, label, align = align );
+    real crossLenght = 0.04;
+    draw((pos + (crossLenght, crossLenght))--(pos + (-crossLenght,-crossLenght)), p = red);
+    draw((pos + (crossLenght,-crossLenght))--(pos + (-crossLenght, crossLenght)), p = red);
   }
 
   void draw(DrawOption drawOpt = null) {
@@ -51,10 +58,8 @@ struct Obj {
       }
 
       if (drawOpt.showOrigin) {
-        label("(0,0)", align = drawOpt.originAlign );
-        real crossLenght = 0.04;
-        draw((crossLenght,crossLenght)--(-crossLenght,-crossLenght), p = red);
-        draw((crossLenght,-crossLenght)--(-crossLenght,crossLenght), p = red);
+        drawPointAndLabel((0,0), "$(0,0)$", align = drawOpt.originAlign);
+        drawPointAndLabel((1,0), "$(1,0)$", align = drawOpt.originAlign);
       }
     }
   }
