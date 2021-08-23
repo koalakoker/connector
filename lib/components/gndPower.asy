@@ -9,15 +9,19 @@ struct GndPower {
   Obj obj;
   int orient;
 
-  void operator init(pair pos, int orient = 0, string name) {
-    if ((orient != 0) && (orient != 90) && (orient != -90) && (orient != -180) && (orient != 180)) {
+  void setOrient(int orient) {
+    if ((orient != 0) && (orient != 90) && (orient != -90)) {
       this.orient = 0;
-      write ("Wrong orient in " + name + ". Forced to 0");
+      write ("Wrong orient in " + this.obj.name + ". Forced to 0");
     } else {
       this.orient = orient;
     }
+  }
 
+  void operator init(pair pos = (0,0), int orient = 0, string name = "") {
+    
     obj.operator init(pos, 0, name);
+    setOrient(orient);
     
     Anchor[] aL;
     Anchor a;
@@ -33,6 +37,9 @@ struct GndPower {
 
     obj.draw(drawOpt);
   }
+
+  void setPos(pair pos) = obj.setPos;
+  void setLabel(string name, pair namePos = (0,0)) = obj.setLabel;
 }
 
 Obj operator cast(GndPower gndPower) {return gndPower.obj;}

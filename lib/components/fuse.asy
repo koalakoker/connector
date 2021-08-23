@@ -14,15 +14,19 @@ struct Fuse {
   Obj obj;
   int orient;
 
-  void operator init(pair pos, int orient = 0, string name) {
+  void setOrient(int orient) {
     if ((orient != 0) && (orient != 90) && (orient != -90)) {
       this.orient = 0;
-      write ("Wrong orient in " + name + ". Forced to 0");
+      write ("Wrong orient in " + this.obj.name + ". Forced to 0");
     } else {
       this.orient = orient;
     }
+  }
 
+  void operator init(pair pos = (0,0), int orient = 0, string name = "") {
+    
     obj.operator init(pos, 0, name);
+    setOrient(orient);
     
     Anchor[] aL;
     Anchor a;
@@ -61,6 +65,9 @@ struct Fuse {
       label(this.obj.name, this.obj.pos + (0.2,-0.5));
     }
   }
+
+  void setPos(pair pos) = obj.setPos;
+  void setLabel(string name, pair namePos = (0,0)) = obj.setLabel;
 }
 
 Obj operator cast(Fuse fuse) {return fuse.obj;}

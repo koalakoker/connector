@@ -6,15 +6,19 @@ struct Capacitor {
   path[] p;
   int orient;
 
-  void operator init(pair pos, int orient = 0, string name) {
+  void setOrient(int orient) {
     if ((orient != 0) && (orient != 90) && (orient != -90)) {
       this.orient = 0;
-      write ("Wrong orient in " + name + ". Forced to 0");
+      write ("Wrong orient in " + this.obj.name + ". Forced to 0");
     } else {
       this.orient = orient;
     }
-
+  }
+  
+  void operator init(pair pos = (0,0), int orient = 0, string name = "") {
+    
     obj.operator init(pos, 0, name);
+    setOrient(orient);
     
     pair[] p = {(0,0), (.45,0), (.45,-.2), (.45,.2), (.55,-.2), (.55,.2), (.55,0), (1,0)};
     this.p = p[0] -- p[1] ^^ p[2] -- p[3] ^^ p[4] -- p[5] ^^ p[6] -- p[7];
@@ -56,6 +60,9 @@ struct Capacitor {
       label(this.obj.name, this.obj.pos + (0.3,-0.35));
     }
   }
+
+  void setPos(pair pos) = obj.setPos;
+  void setLabel(string name, pair namePos = (0,0)) = obj.setLabel;
 }
 
 Obj operator cast(Capacitor capacitor) {return capacitor.obj;}

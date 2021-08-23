@@ -6,6 +6,7 @@ struct Obj {
   real len;
   Anchor[] a;
   string name;
+  pair namePos = (0,0);
   align align;
 
   void operator init(pair pos, real len, string name, align align = NoAlign) {
@@ -22,6 +23,15 @@ struct Obj {
 
   pair getAnchorPos(int i) {
     return this.pos + this.a[i].pos;
+  }
+
+  void setPos(pair pos) {
+    this.pos = pos;
+  }
+
+  void setLabel(string name, pair namePos = (0,0)) {
+    this.name= name;
+    this.namePos = namePos;
   }
 
   void drawAnchorPos(int i, DrawOption drawOpt) {

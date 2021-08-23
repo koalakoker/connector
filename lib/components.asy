@@ -2,6 +2,7 @@ import obj;
 import drawOptions;
 
 import node;
+import resistor;
 import fuse;
 import inductor;
 import capacitor;

@@ -178,6 +178,76 @@ In figure \ref{gndSignalInfo} is shown the signal ground symbol. See \texttt{gnd
 \end{figure}
 
 \clearpage
+\section*{Symbol positioning and orientation}
+For each symbol instantiated it is possible to define it's placement in the drawing calling the methods \texttt{setPos} and passing the position of the pivot point as parameter before calling the \texttt{draw} method. For example the code:
+\begin{lstlisting}
+  size(4cm);
+  defaultpen(fontsize(8pt));
+  import resistor;
+  import drawOptions;
+  Resistor r = Resistor();
+  r.setPos((1,0));
+  r.draw(DrawOption(showOrigin = true));
+\end{lstlisting}
+will draw the image shown in figure \ref{placingExample1}. The same effect can be done passing the position of the pivot point as parameter in the constructor function \texttt{Resistor r = Resistor((1,0))}.
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.5\textwidth]{placingExample1.pdf}
+  \caption{Placing the pivot point of the symbol in $(1,0)$}
+  \label{placingExample1}
+\end{figure}
+
+In a similar way is possible to define the orientation of the symbol calling the methods \texttt{setOrient} and passing the orientation of the symbol around the pivot point as parameter before calling the \texttt{draw} method. For example the code:
+\begin{lstlisting}
+  size(4cm);
+  defaultpen(fontsize(8pt));
+  import resistor;
+  import drawOptions;
+  Resistor r = Resistor();
+  r.setOrient(90);
+  r.draw(DrawOption(showOrigin = true));
+\end{lstlisting}
+will draw the image shown in figure \ref{placingExample2}. The same effect can be done passing the orientation of the symbol around the pivot point as parameter in the constructor function \texttt{Resistor r = Resistor(orient = 90)}. The only valid options for the orient parameter are 0, 90, -90  and 180. The anchor points of the symbol will be re-oriented according the orientation of the symbol.
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.35\textwidth]{placingExample2.pdf}
+  \caption{Set the orientation of the symbol around the pivot point as 90}
+  \label{placingExample2}
+\end{figure}
+
+It is possible to use the same instance of the symbol to print it several times in different positions and/or different orientations. In this case can be useful to change the label of the printed instance using the method \texttt{setLabel} and passing the new label as parameter before calling the \texttt{draw} method. For example the code:
+\begin{lstlisting}
+  size(4cm);
+  defaultpen(fontsize(8pt));
+  import components;
+  import drawOptions;
+  import connector;
+  Resistor r = Resistor("$R_1$");
+  Capacitor c = Capacitor((1,0), -90,"$C_1$");
+  Node n = Node((0,-1.1));
+  n.draw();
+  r.draw(DrawOption(showOrigin = true));
+  drawAnchorConnector(n, 2, c, 1);
+  c.draw();
+  r.setPos((1,0));
+  r.setLabel("$R_2$");
+  r.draw();
+  c.setPos((2,0));
+  c.setLabel("$C_2$");
+  c.draw();
+  drawAnchorConnector(n, 2, c, 1);
+\end{lstlisting}
+will draw the image shown in figure \ref{placingExample3}.
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.4\textwidth]{placingExample3.pdf}
+  \caption{Example of multiple symbol placement with the same instance}
+  \label{placingExample3}
+\end{figure}
+
+In figure \ref{placingExample3} the $R_1$ and $R_2$ are drown using the same \emph{Resistor} instance $r$. In the same way $C_1$ and $C_2$ are drown using the same \emph{Capacitor} instance c. The \emph{Node} n is used to draw the connectors of the bottom of the figure. If the positioning of the symbol label is not perfect, it is possible to send a \emph{pair} as second parameter of the method \texttt{setLabel} to set a displacement position only for the label. 
+
+\clearpage
 \section*{Connectors}
 
 It is possible to draw connectors (wires) between symbols with the function \texttt{drawAnchorConnector}. In particular the connection is done starting from one anchor point to another ancor point that are defined in the sybmol (see from figure \ref{nodeInfo} to figure \ref{gndSignalInfo} as reference). The path of the connector is automatically computed by the library in the best way and is drown according the direction of the ancor point. The figure \ref{connectorExample} show an example of connections between generic objects.
