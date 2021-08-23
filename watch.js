@@ -18,6 +18,9 @@ if (args[0] == '-all') {
   fileName.push(args[0]);
 }
 
+let totNumberOfFiles = fileName.length;
+let generatedCorrectly = 0;
+
 generation();
 
 console.log(`Watching for file changes`);
@@ -30,7 +33,8 @@ function generation() {
       if (err) {
         console.log(err);
       } else {
-        console.log(element + ' processed correctly');
+        generatedCorrectly++;
+        console.log(element + ' processed correctly. (' + generatedCorrectly + '/' + totNumberOfFiles + ')');
       }
     });
   });
