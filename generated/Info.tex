@@ -63,21 +63,21 @@ Connector is a library written in \emph{Asymptote} language to generate figures 
 
 \section*{Getting started}
 
-Before to use the \emph{Connector} library is necessary to install the \emph{Asymtote} compiler. Follow the instruction described in the \emph{Asymptote} website at this \href{https://asymptote.sourceforge.io}{link}. It is required to install the \LaTeX environemnt as mentioned in the \emph{Asymptote} installation documentation. It is also suggested to instal \emph{Node.JS} (\href{https://nodejs.org}{link}) to execute the script \texttt{watch.js} that is able to generate automatically the output of the \emph{.asy} file you are working every time you modify it. Finally it is also kindly suggested to install \emph{Visual Studio Code} (\href{https://code.visualstudio.com}{link}) and some of it's fantastic extention to support \emph{Asymptote} and \LaTeX languages.
+Before to use the \emph{Connector} library is necessary to install the \emph{Asymptote } compiler. Follow the instruction described in the \emph{Asymptote} website at this \href{https://asymptote.sourceforge.io}{link}. It is required to install the \LaTeX environment as mentioned in the \emph{Asymptote} installation documentation. It is also suggested to install \emph{Node.JS} (\href{https://nodejs.org}{link}) to execute the script \texttt{watch.js} that is able to generate automatically the output of the \emph{.asy} file you are working every time you modify it. Finally, it is also kindly suggested to install \emph{Visual Studio Code} (\href{https://code.visualstudio.com}{link}) and some of its fantastic extensions to support \emph{Asymptote} and \LaTeX languages.
 
-Download and unpack the \emph{Connector} library in a working folder of your file system, take a look at the examples \texttt{.asy} file that are provided to take inspiaration. Create a \texttt{newFile.asy} with your code and compile it with the command line \texttt{asy newFile.asy}. The compiled \texttt{.pdf} file will be created in the current folder. Or use \texttt{node watch.js newFile.asy} for the automatic genertion after each file modification. The compiled \texttt{.pdf} file will be created in the \texttt{generated} folder in this case. It is possible to produce a \texttt{.png} file adding the line \texttt{settings.outformat="png";} to your code or replacing the line \texttt{settings.outformat="pdf"} with \texttt{"png"} if it is already present.
+Download and unpack the \emph{Connector} library in a working folder of your file system, take a look at the examples \texttt{.asy} file that are provided to take inspiration. Create a \texttt{newFile.asy} with your code and compile it with the command line \texttt{asy newFile.asy}. The compiled \texttt{.pdf} file will be created in the current folder. Or use \texttt{node watch.js newFile.asy} for the automatic generation after each file modification. The compiled \texttt{.pdf} file will be created in the \texttt{generated} folder in this case. It is possible to produce a \texttt{.png} file adding the line \texttt{settings.outformat="png";} to your code or replacing the line \texttt{settings.outformat="pdf"} with \texttt{"png"} if it is already present.
 
-It is also kindly suggested to learn the \emph{Asymptote} language to be familiar with the \emph{Connector} library an to use it at the best.
+It is also kindly suggested to learn the \emph{Asymptote} language to be familiar with the \emph{Connector} library and to use it at the best.
 
-If you want to collaborate with the \emph{Connector} project to add other symbols, for the internazionalization of the documentation, to fix or report some bugs, to request other features, or for any other kind of collaborations, please let me know at \emph{\href{mailto:koalakoker@gmail.com}{koalakoker@gmail.com}}.
+If you want to collaborate with the \emph{Connector} project to add other symbols, for the internationalization of the documentation, to fix or report some bugs, to request other features, or for any other kind of collaborations, please let me know at \emph{\href{mailto:koalakoker@gmail.com}{koalakoker@gmail.com}}.
 
 \section*{Electronic Symbols}
 
-The following list of components have been included in the libary and can be used out-of-the-box: node, resistor, capacitor, inductor, fuse, diode, relay, relay SPDT, IGBT, MOS, power ground, signal ground. Maybe other will be added in the future.
+The following list of components have been included in the library and can be used out-of-the-box: node, resistor, capacitor, inductor, fuse, diode, relay, relay SPDT, IGBT, MOS, power ground, signal ground. Maybe other will be added in the future.
 
-In the figures from \ref{fig:nodeInfo} to \ref{fig:gndSignalInfo} are shown the components, the anchor points as a black dot. The anchor point direction is indicated with a green line starting from the dot and going outward, the anchor point index number is indicated near the end of the green line. It is also indicated the position of the pivot point $(0,0)$ and and also the position of the $(1,0)$ point for a spatial reference; both are indicated with a red crosses.
+In the figures from \ref{fig:nodeInfo} to \ref{fig:gndSignalInfo} are shown the components, the anchor points as a black dot. The anchor point direction is indicated with a green line starting from the dot and going outward, the anchor point index number is indicated near the end of the green line. It is also indicated the position of the pivot point $(0,0)$ and also the position of the $(1,0)$ point for a spatial reference; both are indicated with a red cross.
 
-In figure \ref{fig:nodeInfo} is shown a generic node symbol. See \texttt{nodeInfo.asy} code to reproduce the figure. Note that this symbol have four anchor points going in four different directions. It can be very useful to connect different part of the schematics with a connector line.
+In figure \ref{fig:nodeInfo} is shown a generic node symbol. See \texttt{nodeInfo.asy} code to reproduce the figure. Note that this symbol has four anchor points going in four different directions. It can be very useful to connect different part of the schematics with a connector line.
 
 To draw any symbol without the indication of the anchor points, pivot point and all other info simply call the \texttt{draw} method without the \texttt{drawOpt} parameter or setting it to \texttt{null}.   
 
@@ -189,7 +189,7 @@ In figure \ref{fig:gndSignalInfo} is shown the signal ground symbol. See \texttt
 
 \clearpage
 \section*{Symbol positioning and orientation}
-For each symbol instantiated it is possible to define it's placement in the drawing calling the methods \texttt{setPos} and passing the position of the pivot point as parameter before calling the \texttt{draw} method. For example the code:
+For each symbol instantiated it is possible to define its placement in the drawing calling the methods \texttt{setPos} and passing the position of the pivot point as parameter before calling the \texttt{draw} method. For example, the code:
 \begin{lstlisting}
   size(4cm);
   defaultpen(fontsize(8pt));
@@ -207,7 +207,7 @@ will draw the image shown in figure \ref{fig:placingExample1}. The same effect c
   \label{fig:placingExample1}
 \end{figure}
 
-In a similar way is possible to define the orientation of the symbol calling the methods \texttt{setOrient} and passing the orientation of the symbol around the pivot point as parameter before calling the \texttt{draw} method. For example the code:
+In a similar way is possible to define the orientation of the symbol calling the methods \texttt{setOrient} and passing the orientation of the symbol around the pivot point as parameter before calling the \texttt{draw} method. For example, the code:
 \begin{lstlisting}
   size(4cm);
   defaultpen(fontsize(8pt));
@@ -217,7 +217,7 @@ In a similar way is possible to define the orientation of the symbol calling the
   r.setOrient(90);
   r.draw(DrawOption(showOrigin = true));
 \end{lstlisting}
-will draw the image shown in figure \ref{fig:placingExample2}. The same effect can be done passing the orientation of the symbol around the pivot point as parameter in the constructor function \texttt{Resistor r = Resistor(orient = 90)}. The only valid options for the orient parameter are 0, 90, -90  and 180. The anchor points of the symbol will be re-oriented according the orientation of the symbol.
+will draw the image shown in figure \ref{fig:placingExample2}. The same effect can be done passing the orientation of the symbol around the pivot point as parameter in the constructor function \texttt{Resistor r = Resistor(orient = 90)}. The only valid options for the orient parameter are 0, 90, -90  and 180. The anchor points of the symbol will be re-oriented according to the orientation of the symbol.
 \begin{figure}[ht]
   \centering
   \includegraphics[width=0.35\textwidth]{placingExample2.pdf}
@@ -225,7 +225,7 @@ will draw the image shown in figure \ref{fig:placingExample2}. The same effect c
   \label{fig:placingExample2}
 \end{figure}
 
-It is possible to use the same instance of the symbol to print it several times in different positions and/or different orientations. In this case can be useful to change the label of the printed instance using the method \texttt{setLabel} and passing the new label as parameter before calling the \texttt{draw} method. For example the code:
+It is possible to use the same instance of the symbol to print it several times in different positions and/or different orientations. In this case can be useful to change the label of the printed instance using the method \texttt{setLabel} and passing the new label as parameter before calling the \texttt{draw} method. For example, the code:
 \begin{lstlisting}
   size(4cm);
   defaultpen(fontsize(8pt));
@@ -260,13 +260,13 @@ In figure \ref{fig:placingExample3} the $R_1$ and $R_2$ are drown using the same
 \section*{Anchor points}
 \label{sct:anchorPoints}
 
-The anchor points are used to connect the symbol using \emph{Connectors} as described in section \nameref{sct:connector}. Each symbol has a set of ancor points already defined. Use figures from \ref{fig:nodeInfo} to \ref{fig:gndSignalInfo} as reference to know which anchor points are defined in the symbol.
+The anchor points are used to connect the symbol using \emph{Connectors} as described in section \nameref{sct:connector}. Each symbol has a set of anchor points already defined. Use figures from \ref{fig:nodeInfo} to \ref{fig:gndSignalInfo} as reference to know which anchor points are defined in the symbol.
 
 An anchor point has a position indicated with a dot in the symbol figures, this will be the starting or ending point of the connectors. The anchor point has an index, indicated with a number in the symbol figures. This index will be used to identify the anchor point among the various present in the symbol. The anchor point has a direction indicated with the green line in the symbol figures, that start from the dot and go outward. This will be the direction of the connector that starts o ends in this specific anchor point.
 
-It is possible to get the position of an anchor point of an instance of a symbol with the function \texttt{GetAnchorPos(obj, index)}. Each symbol is a derived class from a generic object. The function returns a \emph{pair} that indicate the coordinate of the anchor position; this can be used to place other symbols aligned with that position. Many examples provided with the library make use of this strategy to align the symbols. E.g. \texttt{ThreePhaseInverter.asy}.
+It is possible to get the position of an anchor point of an instance of a symbol with the function \texttt{GetAnchorPos(obj, index)}. Each symbol is a derived class from a generic object. The function returns a \emph{pair} that indicate the coordinate of the anchor position; this can be used to place other symbols aligned with that position. Many examples provided with the library make use of this strategy to align the symbols. E.g., \texttt{ThreePhaseInverter.asy}.
 
-It is possible to change the orientation of an anchor point with the function \texttt{setAnchorDirection(object, index, direction)}. Where \texttt{object} is the instance of the symbol on which operate, \texttt{index} is the index of the anchor point to be modified and \texttt{direction} is the new direction. The available directions are: \emph{DN} (equal to north or up), \emph{DS} (equal to south or down), \emph{DE} (equal to east or rigth) or \emph{DW} (equal to west or left). In figure \ref{fig:anchorPointExample} are shown respectvely the outputs of the examples \texttt{anchorExample1.asy} \ref{subFig:anchorExampleDefault} and \texttt{anchorExample1.asy} \ref{subFig:anchorExampleCustom}. It is an example on how to customize the direction of the default anchor points. 
+It is possible to change the orientation of an anchor point with the function \texttt{setAnchorDirection(object, index, direction)}. Where \texttt{object} is the instance of the symbol on which operate, \texttt{index} is the index of the anchor point to be modified and \texttt{direction} is the new direction. The available directions are: \emph{DN} (equal to north or up), \emph{DS} (equal to south or down), \emph{DE} (equal to east or right) or \emph{DW} (equal to west or left). In figure \ref{fig:anchorPointExample} are shown respectively the outputs of the examples \texttt{anchorExample1.asy} \ref{subFig:anchorExampleDefault} and \texttt{anchorExample1.asy} \ref{subFig:anchorExampleCustom}. It is an example on how to customize the direction of the default anchor points. 
 
 \begin{figure}
   \centering
@@ -286,7 +286,7 @@ It is possible to change the orientation of an anchor point with the function \t
   \label{fig:anchorPointExample}
 \end{figure}
 
-It is also possible to add other anchor points to a symbol using the function \texttt{AddAnchorPoint(object, position, direction)}. Where \texttt{object} is the instance of the symbol on which operate, \texttt{position} is a \emph{pair} that defines the position of the new anchor point; note that this \texttt{position} is the absolute position of the ancor point in the drawing, while the relative position respect the parent symbol is compunted by the function. And \texttt{direction} is the direction of the new anchor point. The available directions are, with the same meaning mentioned before: \emph{DN}, \emph{DS}, \emph{DE}, \emph{DW}. In figure \ref{fig:anchorExample3} is shown the output of the \texttt{anchorExample3.asy} code that shows how to add other anchor points to a symbol; this can be very useful to put differnet symbols in parallel.
+It is also possible to add other anchor points to a symbol using the function \texttt{AddAnchorPoint(object, position, direction)}. Where \texttt{object} is the instance of the symbol on which operate, \texttt{position} is a \emph{pair} that defines the position of the new anchor point; note that this \texttt{position} is the absolute position of the anchor point in the drawing, while the relative position respects the parent symbol is computed by the function. And \texttt{direction} is the direction of the new anchor point. The available directions are, with the same meaning mentioned before: \emph{DN}, \emph{DS}, \emph{DE}, \emph{DW}. In figure \ref{fig:anchorExample3} is shown the output of the \texttt{anchorExample3.asy} code that shows how to add other anchor points to a symbol; this can be very useful to put different symbols in parallel.
 
 \begin{figure}[ht]
   \centering
@@ -299,7 +299,7 @@ It is also possible to add other anchor points to a symbol using the function \t
 \section*{Connectors}
 \label{sct:connector}
 
-It is possible to draw connectors (wires) between symbols with the function \texttt{drawAnchorConnector}. In particular the connection is done starting from one anchor point to another ancor point that are defined in the symbol. See from figure \ref{fig:nodeInfo} to figure \ref{fig:gndSignalInfo} to check the default anchor points defined in each symbols. See section \nameref{sct:anchorPoints} for details about anchor points. The path of the connector is automatically computed by the library in the best way and is drown according the direction of the ancor point. The figure \ref{fig:connectorExample} show an example of connections between generic objects.
+It is possible to draw connectors (wires) between symbols with the function \texttt{drawAnchorConnector}. In particular the connection is done starting from one anchor point to another anchor point that are defined in the symbol. See from figure \ref{fig:nodeInfo} to figure \ref{fig:gndSignalInfo} to check the default anchor points defined in each symbol. See section \nameref{sct:anchorPoints} for details about anchor points. The path of the connector is automatically computed by the library in the best way and is drown according to the direction of the anchor point. The figure \ref{fig:connectorExample} show an example of connections between generic objects.
 
 \begin{figure}[ht]
   \centering
