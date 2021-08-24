@@ -25,6 +25,10 @@ struct Obj {
     return this.pos + this.a[i].pos;
   }
 
+  void setAnchorDirection(int index, int dir) {
+    this.a[index].dir = dir;
+  }
+
   void setPos(pair pos) {
     this.pos = pos;
   }
@@ -82,4 +86,8 @@ pair GetAnchorPos(Obj o, int i) {
 int AddAnchorPoint(Obj o, pair pos, int dir) {
   Anchor a = Anchor(pos - o.pos, dir);
   return o.addAnchorPoint(a);
+}
+
+void setAnchorDirection(Obj obj, int index, int dir) {
+  obj.setAnchorDirection(index, dir);
 }

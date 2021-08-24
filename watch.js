@@ -43,6 +43,7 @@ function generation() {
 
 function fileChanged(curr, prev) {
   console.log(`Source modified`);
+  generatedCorrectly = 0;
   generation();
 }
 
