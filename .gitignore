@@ -4,3 +4,4 @@ texput.aux
 texput.log
 *.tex
 generated
+*.code-workspace
