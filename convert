@@ -1,0 +1,3 @@
+#!/bin/zsh
+magick mogrify -density 300 -depth 8 -quality 85 -format jpg generated/*.pdf
+mv generated/*.jpg generated/jpg
